@@ -20,6 +20,31 @@ body {
 .content, .card, .hero {
   color: var(--text);
 }
+.under-construction {
+  text-align: center;
+  padding: 50px 20px;
+  color: var(--primary);
+}
+.under-construction h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+.under-construction p {
+  font-size: 1.1em;
+  margin: 10px 0;
+}
+.under-construction hr {
+  width: 50%;
+  margin: 20px auto;
+  border: 1px solid var(--secondary);
+}
+.under-construction a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.under-construction a:hover {
+  text-decoration: underline;
+}
 header {
   background-color: var(--primary);
   padding: 5px 20px;
@@ -352,6 +377,41 @@ html {
 }
 .footer-right {
   text-align: right;
+}
+.error-page {
+  text-align: center;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  color: var(--text);
+}
+.error-page .logo-container {
+  margin-bottom: 30px;
+}
+.error-page .logo-container .logo-icon {
+  height: 300px; 
+  width: auto; 
+  display: block; 
+  margin: 0 auto; 
+}
+.error-page h2 {
+  font-size: 6em;
+  color: var(--primary); 
+  margin: 0 0 20px 0;
+}
+.error-page p {
+  font-size: 1.2em;
+  margin: 10px 0;
+}
+.error-page .emoji {
+  font-size: 2em;
+  margin-top: 20px;
+}
+.error-page a.hero-btn2 {
+  margin-top: 25px;
 }
 @media (min-width: 600px) {
   nav {
