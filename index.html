@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SnapVault</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body id="top">
+    <header>
+        <div class="header-container">
+            <div class="branding">
+                <a href="index.html" aria-label="Go to Home">
+                  <img class="logo-icon" src="images/SnapVault logo 3.png" alt="SnapVault Icon">
+                </a>
+                <h1 class="logo-text"><a href="index.html" style="color: inherit; text-decoration: none;">SnapVault</a></h1>
+            </div>
+            <div class="search-box header-search">
+                <input type="text" placeholder="Search...">
+                <button>🔍</button>
+            </div>
+        </div>
+    </header>
+    <nav>
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="project-upload.html">Project Upload</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+            <div class="search-box nav-search">
+                <input type="text" id="nav-search" placeholder="Search...">
+                <button id="nav-search-btn">🔍</button>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <section class="hero">
+            <h1>Store, Manage, and Share Your Projects Securely</h1>
+            <p>
+                SnapVault is your all-in-one solution for project management and file storage. 
+                Keep everything organized, accessible, and secure in one place.
+            </p>
+            <div class="cta-buttons">
+                <a href="project-upload.html" class="hero-btn1">Get Started →</a>
+                <a href="projects.html" class="hero-btn2">View Projects</a>
+            </div>
+        </section>
+        <section class="cards">
+            <h2 class="cards-heading">
+                Why Choose SnapVault?
+            </h2>
+            <div class="card-row">
+                <div class="card">
+                    <img src="images/micah-williams-lmFJOx7hPc4-unsplash.jpg" alt="Image of a 
+                    lock to represent security" class="card-image">
+                    <h3>
+                        🛡️ Secure Storage
+                    </h3>
+                    <p class="card-caption">
+                        Keep your projects safe and organized with reliable document storage and 
+                        management.
+                    </p>
+                </div>
+                <div class="card">
+                    <img src="images/stephen-yu-6o1um-upsplash.jpg" alt="Image of a fast runner 
+                    to represent speed" class="card-image">
+                    <h3>
+                        ⚡️ Lightning Fast
+                    </h3>
+                    <p class="card-caption">
+                        Instant access to your files with blazing-fast upload and download speeds 
+                        across all devices.
+                    </p>
+                </div>
+                <div class="card">
+                    <img src="images/vitaly-gariev-HLqoZnQXQ6w-unsplash.jpg" alt="Image of a 
+                    team working together to represent collaboration" class="card-image">
+                    <h3>
+                        👥 Team Collaboration
+                    </h3>
+                    <p class="card-caption">
+                        Work together seamlessly with real-time collaboration tools and shared 
+                        project spaces.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section class="content">
+            <h2 class="content-heading">
+                How It Works
+            </h2>
+            <p class="content-subheading">
+                Simple steps to manage your projects efficiently.
+            </p>
+        </section>
+        <section class="video">
+            <video controls width="500">
+                <source src="SnapVault-demo.mp4" type="video/mp4" alt="Short demo of website">
+            </video>
+        </section>
+        <section class="cta">
+            <a href="projects.html" class="cta-btn">Start Your First Project</a>
+        </section>
+        <br><br>
+    </main>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-left">
+                <p>
+                    Contact: 
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=support@snapvault.com" target="_blank">
+                    support@snapvault.com
+                    </a>
+                </p>
+                <a href="https://www.google.com" target="_blank">Explore More Online</a>
+            </div>
+            <div class="footer-center">
+                <a href="#top">
+                    <img src="images/SnapVault logo.png" alt="SnapVault Logo" class="footer-logo">
+                    <span class="footer-logo-caption">TO TOP</span>
+                </a>    
+            </div>
+            <div class="footer-right">
+                <p>© 2026 SnapVault</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.querySelector('.nav-search input');
+            const searchBtn = document.querySelector('.nav-search button');
+            const projects = [
+                "Project Alpha",
+                "Project Beta",
+                "Project Gamma"
+            ];
+        function performSearch() {
+            const query = searchInput.value.trim().toLowerCase();
+            if (!query) return;
+            const found = projects.find(p => p.toLowerCase().includes(query));
+            if (found) {
+                alert("Found project: " + found);
+            } else {
+                alert("Unable to find project: " + query);
+            }
+        }
+        searchBtn.addEventListener('click', performSearch);
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
