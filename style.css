@@ -46,8 +46,8 @@ body {
   text-decoration: underline;
 }
 a:focus, button:focus, input:focus {
-  outline: 2px dashed var(--accent);
-  outline-offset: 4px;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(25, 82, 154, 0.4);
 }
 header {
   background-color: var(--primary);
