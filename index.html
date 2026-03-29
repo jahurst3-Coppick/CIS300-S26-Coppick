@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SnapVault is an all-in-one project management and file storage platform. Store, manage, and share your projects securely." />
   <title>SnapVault | Home</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="images/SnapVault favicon.png">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="images/SnapVault-favicon.png" />
 </head>
 <body id="top">
     <header>
         <div class="header-container">
             <div class="branding">
                 <a href="index.html" aria-label="Go to Home">
-                  <img class="logo-icon" src="images/SnapVault logo 3.png" alt="SnapVault Icon">
+                  <img class="logo-icon" src="images/SnapVault-logo-3.png" alt="SnapVault Icon" />
                 </a>
-                <h1 class="logo-text"><a href="index.html" style="color: inherit; text-decoration: none;">SnapVault</a></h1>
+                <h2 class="logo-text">
+                    <a href="index.html" aria-label="Go to Home">
+                        SnapVault
+                    </a>
+                </h2>
             </div>
             <div class="search-box header-search">
-                <input type="text" placeholder="Search...">
+                <input type="text" placeholder="Search..." aria-label="Search projects" />
                 <button>🔍</button>
             </div>
         </div>
@@ -31,14 +36,21 @@
                 <li><a href="about.html">About</a></li>
             </ul>
             <div class="search-box nav-search">
-                <input type="text" id="nav-search" placeholder="Search...">
-                <button id="nav-search-btn">🔍</button>
+                <div class="search-inner">
+                    <input type="text" id="nav-search" placeholder="Search..." aria-label="Search projects">
+                    <button id="nav-search-btn">
+                        🔍
+                    </button>
+                </div>
+                <div class="search-results"></div>
             </div>
         </div>
     </nav>
     <main>
         <section class="hero">
-            <h1>Store, Manage, and Share Your Projects Securely</h1>
+            <h1>
+                Store, Manage, and Share Your Projects Securely
+            </h1>
             <p>
                 SnapVault is your all-in-one solution for project management and file storage. 
                 Keep everything organized, accessible, and secure in one place.
@@ -53,10 +65,9 @@
                 Why Choose SnapVault?
             </h2>
             <div class="card-row">
-                <div class="card">
-                    <img src="images/micah-williams-lmFJOx7hPc4-unsplash.jpg" alt="Image of a 
-                    lock to represent security" class="card-image">
-                    <h3>
+                <div class="card" tabindex="0" aria-labelledby="secure-storage">
+                    <img src="images/micah-williams-lmFJOx7hPc4-unsplash.jpg" alt="Secure file storage illustration" class="card-image">
+                    <h3 id="secure-storage">
                         🛡️ Secure Storage
                     </h3>
                     <p class="card-caption">
@@ -64,10 +75,9 @@
                         management.
                     </p>
                 </div>
-                <div class="card">
-                    <img src="images/stephen-yu-6o1um-upsplash.jpg" alt="Image of a fast runner 
-                    to represent speed" class="card-image">
-                    <h3>
+                <div class="card" tabindex="0" aria-labelledby="fast-upload">
+                    <img src="images/stephen-yu-6o1um-unsplash.jpg" alt="Fast file upload and download illustration" class="card-image">
+                    <h3 id="fast-upload">
                         ⚡️ Lightning Fast
                     </h3>
                     <p class="card-caption">
@@ -75,10 +85,9 @@
                         across all devices.
                     </p>
                 </div>
-                <div class="card">
-                    <img src="images/vitaly-gariev-HLqoZnQXQ6w-unsplash.jpg" alt="Image of a 
-                    team working together to represent collaboration" class="card-image">
-                    <h3>
+                <div class="card" tabindex="0" aria-labelledby="team-collaboration">
+                    <img src="images/vitaly-gariev-HLqoZnQXQ6w-unsplash.jpg" alt="Team collaborating illustration" class="card-image">
+                    <h3 id="team-collaboration">
                         👥 Team Collaboration
                     </h3>
                     <p class="card-caption">
@@ -95,31 +104,33 @@
             <p class="content-subheading">
                 Simple steps to manage your projects efficiently.
             </p>
+            <ul>
+                <li>Upload and store your project files and pictures securely</li>
+                <li>Organize projects for easy access</li>
+                <li>Share and collaborate with your team in real time</li>
+            </ul>
         </section>
         <section class="video">
-            <video controls width="500">
-                <source src="SnapVault-demo.mp4" type="video/mp4" alt="Short demo of website">
+            <video controls style="max-width: 60%; height: auto;">
+                <source src="SnapVault-demo.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
             </video>
         </section>
-        <section class="cta">
+        <section class="cta" tabindex="0">
             <a href="projects.html" class="cta-btn">Start Your First Project</a>
         </section>
-        <br><br>
     </main>
     <footer>
         <div class="footer-container">
             <div class="footer-left">
                 <p>
-                    Contact: 
-                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=support@snapvault.com" target="_blank">
-                    support@snapvault.com
-                    </a>
+                    Contact: support@snapvault.com
                 </p>
-                <a href="https://www.google.com" target="_blank">Explore More Online</a>
+                <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">Explore More Online</a>
             </div>
             <div class="footer-center">
                 <a href="#top">
-                    <img src="images/SnapVault logo.png" alt="SnapVault Logo" class="footer-logo">
+                    <img src="images/SnapVault-logo.png" alt="SnapVault Logo" class="footer-logo">
                     <span class="footer-logo-caption">TO TOP</span>
                 </a>    
             </div>
@@ -130,28 +141,43 @@
     </footer>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const searchInput = document.querySelector('.nav-search input');
-            const searchBtn = document.querySelector('.nav-search button');
-            const projects = [
-                "Project Alpha",
-                "Project Beta",
-                "Project Gamma"
-            ];
-        function performSearch() {
-            const query = searchInput.value.trim().toLowerCase();
-            if (!query) return;
-            const found = projects.find(p => p.toLowerCase().includes(query));
-            if (found) {
-                alert("Found project: " + found);
-            } else {
-                alert("Unable to find project: " + query);
-            }
-        }
-        searchBtn.addEventListener('click', performSearch);
-            searchInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    performSearch();
+
+            const searches = document.querySelectorAll('.search-box');
+
+            const projects = ["Project Alpha", "Project Beta", "Project Gamma"];
+
+            searches.forEach(search => {
+                const input = search.querySelector('input');
+                const button = search.querySelector('button');
+                const results = search.querySelector('.search-results');
+
+                function performSearch() {
+                    const query = input.value.trim().toLowerCase();
+                    if (results) results.innerHTML = '';
+
+                    if (!query) return;
+
+                    const found = projects.filter(p => p.toLowerCase().includes(query));
+
+                    const container = results || search;
+
+                    if (found.length) {
+                        found.forEach(pj => {
+                            const p = document.createElement('p');
+                            p.textContent = "Found project: " + pj;
+                            container.appendChild(p);
+                        });
+                    } else {
+                        const p = document.createElement('p');
+                        p.textContent = "No projects found for: " + query;
+                        container.appendChild(p);
+                    }
                 }
+
+                button.addEventListener('click', performSearch);
+                input.addEventListener('keypress', e => {
+                    if (e.key === 'Enter') performSearch();
+                });
             });
         });
     </script>

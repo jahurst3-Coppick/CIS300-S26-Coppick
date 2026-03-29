@@ -1,7 +1,7 @@
 # CIS300-S26-Coppick
 
 ## SnapVault – Secure Project Management Platform
-🔗 **Live Site:** https://github.com/jahurst3-Coppick/CIS300-S26-Coppick.git
+🔗 **Live Site:** https://jahurst3-coppick.github.io/CIS300-S26-Coppick/index.html
 
 SnapVault is a modern web application designed for storing, managing, and sharing projects securely. It combines a clean, responsive design with practical functionality to keep projects organized, accessible, and easy to collaborate on.
 
