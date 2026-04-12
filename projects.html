@@ -1,23 +1,577 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="SnapVault is an all-in-one project management and file storage platform. Store, manage, and share your projects securely.">
-    <title>SnapVault | Projects</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="images/SnapVault-favicon.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="View and manage your projects in SnapVault.">
+  <title>SnapVault | Projects</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="images/SnapVault-favicon.png">
 </head>
-<body>
-    <main class="under-construction">
-        <section>
-            <h1>Page Under Construction</h1>
-                <p>We're still building this page. In the meantime, you can return to the 
-            <a href="index.html">Home Page</a>.
-            </p>
-            <hr>
-            <p>Thanks for your patience!</p>
-        </section>
-    </main>
+<body id="top" class="projects">
+
+  <header>
+    <div class="header-container">
+      <div class="branding">
+        <a href="index.html">
+          <img class="logo-icon" src="images/SnapVault-logo-3.png" alt="SnapVault Icon">
+        </a>
+        <h2 class="logo-text">
+          <a href="index.html">SnapVault</a>
+        </h2>
+      </div>
+      <div class="search-box header-search">
+        <input type="text" placeholder="Search..." aria-label="Search projects" />
+        <button>🔍</button>
+    </div>
+  </header>
+
+  <nav>
+    <div class="nav-container">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="upload.html">New Project</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="projects-page">
+    <section class="projects-hero hero-bg">
+      <h1>Projects</h1>
+      <p>Manage and track all your projects in one place</p>
+      <a href="upload.html" class="new-project-btn">New Project</a>
+    </section>
+
+    <table class="projects-table">
+      <thead>
+        <tr>
+          <th>Project Name</th>
+          <th>Description</th>
+          <th>Status</th>
+          <th>Files</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="example-project locked">
+          <td>Example 1: Beach House Remodel</td>
+          <td>Complete Beach House Remodel</td>
+          <td><span class="status-active">active</span></td>
+          <td>3</td>
+          <td>
+            <button class="toggle-btn">🔍✏️</button>
+            <button class="delete-btn">🗑️</button>
+          </td>
+        </tr>
+        <tr class="project-details example-project locked">
+          <td colspan="5">
+            <div class="details-content">
+              <div class="edit-section">
+                <label>Project Name:</label>
+                <input type="text" value="Beach House Remodel">
+
+                <label>Description:</label>
+                <textarea>Complete beach house renovation</textarea>
+
+                <label>Status:</label>
+                <select class="status-select">
+                  <option>active</option>
+                  <option>completed</option>
+                  <option>urgent</option>
+                </select>
+
+                <div class="urgent-input">
+                  <label>Urgent Issue:</label>
+                  <input type="text" placeholder="Describe urgent issue">
+                </div>
+
+                <label>Notes:</label>
+                <textarea>Waiting on client approval and first deposit</textarea>
+
+                <div class="dates">
+                  <p><strong>Created:</strong> 2026-02-15</p>
+                  <p><strong>Last Modified:</strong> 2026-03-08</p>
+                </div>
+              </div>
+
+              <div class="gallery" style="display:flex; margin-top:10px;">
+                <div class="gallery-item">
+                  <img src="images/sample1.jpg" alt="Project Framing Image">
+                  <input type="text" value="Framing">
+                </div>
+                <div class="gallery-item">
+                  <img src="images/sample2.jpg" alt="Project Trusses Image">
+                  <input type="text" value="Trusses">
+                </div>
+                <div class="gallery-item">
+                  <img src="images/sample3.jpg" alt="Project Exterior Image">
+                  <input type="text" value="Exterior">
+                </div>
+              </div>
+              <button type="button" class="save-project-btn">Save Changes</button>
+
+            </div>
+          </td>
+        </tr>
+        <tr class="example-project locked">
+          <td>Example 2: Beach House Decking</td>
+          <td>Replace Beach House Decking</td>
+          <td><span class="status-completed">completed</span></td>
+          <td>3</td>
+          <td>
+            <button class="toggle-btn">🔍✏️</button>
+            <button class="delete-btn">🗑️</button>
+          </td>
+        </tr>
+        <tr class="project-details example-project locked">
+          <td colspan="5">
+            <div class="details-content">
+              <div class="edit-section">
+                <label>Project Name:</label>
+                <input type="text" value="Beach House Decking">
+
+                <label>Description:</label>
+                <textarea>Redesign and replace the beach house decking</textarea>
+
+                <label>Status:</label>
+                <select class="status-select">
+                  <option>active</option>
+                  <option>completed</option>
+                  <option>urgent</option>
+                </select>
+
+                <div class="urgent-input">
+                  <label>Urgent Issue:</label>
+                  <input type="text" placeholder="Describe urgent issue">
+                </div>
+
+                <label>Notes:</label>
+                <textarea>Client has requested an exterior shower and deck extension</textarea>
+
+                <div class="dates">
+                  <p><strong>Created:</strong> 2026-02-15</p>
+                  <p><strong>Last Modified:</strong> 2026-03-08</p>
+                </div>
+              </div>
+
+              <div class="gallery" style="display:flex; margin-top:10px;">
+                <div class="gallery-item">
+                  <img src="images/sample4.jpg" alt="Project Deck Shower Image">
+                  <input type="text" value="Deck Shower">
+                </div>
+                <div class="gallery-item">
+                  <img src="images/sample5.jpg" alt="Project Deck Stairs Image">
+                  <input type="text" value="Deck Stairs">
+                </div>
+                <div class="gallery-item">
+                  <img src="images/sample6.jpg" alt="Project Deck Railing Image">
+                  <input type="text" value="Deck Railing">
+                </div>
+              </div>
+              <button type="button" class="save-project-btn">Save Changes</button>
+
+            </div>
+          </td>
+        </tr>
+        <tr class="example-project locked">
+          <td>Example 3: Beach House Flooring</td>
+          <td>Complete Beach House LVP Flooring</td>
+          <td><span class="status-urgent">urgent</span></td>
+          <td>1</td>
+          <td>
+            <button class="toggle-btn">🔍✏️</button>
+            <button class="delete-btn">🗑️</button>
+          </td>
+        </tr>
+        <tr class="project-details example-project locked">
+          <td colspan="5">
+            <div class="details-content">
+              <div class="edit-section">
+                <label>Project Name:</label>
+                <input type="text" value="Beach House Flooring">
+
+                <label>Description:</label>
+                <textarea>Complete beach house LVP flooring installation</textarea>
+
+                <label>Status:</label>
+                <select class="status-select">
+                  <option>active</option>
+                  <option>completed</option>
+                  <option selected>urgent</option>
+                </select>
+
+                <div class="urgent-input">
+                  <label>Urgent Issue:</label>
+                  <input type="text" value="Flooring material delayed by supplier - need to expedite delivery">
+                </div>
+
+                <label>Notes:</label>
+                <textarea>Client has requested a "dusk cherry" LVP flooring throughout the house</textarea>
+
+                <div class="dates">
+                  <p><strong>Created:</strong> 2026-02-15</p>
+                  <p><strong>Last Modified:</strong> 2026-03-08</p>
+                </div>
+              </div>
+
+              <div class="gallery" style="display:flex; margin-top:10px;">
+                <div class="gallery-item">
+                  <img src="images/sample7.jpg" alt="Project Flooring Image">
+                  <input type="text" value="Framing">
+                </div>
+              
+              </div>
+              <button type="button" class="save-project-btn">Save Changes</button>
+
+            </div>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-left">
+        <p>Contact: support@snapvault.com</p>
+        <a href="https://www.google.com" target="_blank">Explore More Online</a>
+      </div>
+
+      <div class="footer-center">
+        <a href="#top">
+          <img src="images/SnapVault-logo.png" alt="SnapVault Logo" class="footer-logo">
+          <span class="footer-logo-caption">TO TOP</span>
+        </a>
+      </div>
+
+      <div class="footer-right">
+        <p>© 2026 SnapVault</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function initToggleButtons() {
+      document.querySelectorAll('.toggle-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const row = btn.closest('tr');
+          const details = row.nextElementSibling;
+
+          document.querySelectorAll('.project-details').forEach(r => {
+            if (r !== details) r.style.display = 'none';
+          });
+
+          details.style.display =
+            details.style.display === 'table-row' ? 'none' : 'table-row';
+        });
+      });
+    }
+
+    function initDeleteButtons() {
+      document.querySelectorAll('.delete-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const row = btn.closest('tr');
+          const details = row.nextElementSibling;
+
+          if (confirm("Delete this project?")) {
+            row.remove();
+            details.remove();
+
+            let projects = JSON.parse(localStorage.getItem('projects') || '[]');
+            const name = row.querySelector('td').innerText;
+            projects = projects.filter(p => p.name !== name);
+            localStorage.setItem('projects', JSON.stringify(projects));
+          }
+        });
+      });
+    }
+
+    function initUrgentSelect(select) {
+      select.addEventListener('change', () => {
+        const urgentBox = select.closest('.edit-section').querySelector('.urgent-input');
+        urgentBox.style.display = select.value === 'urgent' ? 'block' : 'none';
+      });
+    }
+
+    function addProject(project) {
+      const table = document.querySelector('.projects-table tbody');
+
+      // Handle both old string format ("3 files") and new number format
+      let filesCount = project.files;
+      if (typeof project.files === 'string') {
+        const match = project.files.match(/(\d+)/);
+        filesCount = match ? parseInt(match[1]) : 0;
+      }
+
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${project.name}</td>
+        <td>${project.desc}</td>
+        <td><span class="status-${project.status}">${project.status}</span></td>
+        <td>${filesCount}</td>
+        <td>
+          <button class="toggle-btn">🔍✏️</button>
+          <button class="delete-btn">🗑️</button>
+        </td>
+      `;
+
+      const details = document.createElement('tr');
+      details.classList.add('project-details');
+      details.innerHTML = `
+        <td colspan="5">
+          <div class="details-content">
+            <div class="edit-section">
+              <label>Project Name:</label>
+              <input type="text" value="${project.name}">
+
+              <label>Description:</label>
+              <textarea>${project.desc}</textarea>
+
+              <label>Status:</label>
+              <select class="status-select">
+                <option ${project.status === 'active' ? 'selected' : ''}>active</option>
+                <option ${project.status === 'completed' ? 'selected' : ''}>completed</option>
+                <option ${project.status === 'urgent' ? 'selected' : ''}>urgent</option>
+              </select>
+
+              <div class="urgent-input" style="${project.status==='urgent' ? 'display:block;' : 'display:none;'}">
+                <label>Urgent Issue:</label>
+                <input type="text" value="${project.urgent || ''}" placeholder="Describe urgent issue">
+              </div>
+
+              <label>Notes:</label>
+              <textarea>${project.notes}</textarea>
+
+              <div class="dates">
+                <p><strong>Created:</strong> ${project.created}</p>
+                <p><strong>Last Modified:</strong> ${project.modified}</p>
+              </div>
+
+              <h4>Add More Images</h4>
+              <div class="edit-drop-zone">
+                <p>Drag & Drop Images Here<br>or Click to Select</p>
+                <input type="file" class="edit-image-input" accept="image/*" multiple>
+              </div>
+
+              <button type="button" class="save-project-btn">Save Changes</button>
+            </div>
+
+            <div class="gallery" style="display:flex; margin-top:10px;">
+              ${project.images.map(img => `
+                <div class="gallery-item">
+                  <img src="${img.src}" alt="Project image">
+                  <input type="text" value="${img.caption}">
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        </td>
+      `;
+
+      table.appendChild(row);
+      table.appendChild(details);
+
+      row.querySelector('.toggle-btn').addEventListener('click', () => {
+        details.style.display = details.style.display === 'table-row' ? 'none' : 'table-row';
+      });
+      row.querySelector('.delete-btn').addEventListener('click', () => {
+        if(confirm("Delete this project?")) {
+          row.remove();
+          details.remove();
+
+          let projects = JSON.parse(localStorage.getItem('projects') || '[]');
+          projects = projects.filter(p => p.name !== project.name);
+          localStorage.setItem('projects', JSON.stringify(projects));
+        }
+      });
+      initUrgentSelect(details.querySelector('.status-select'));
+
+      // Handle adding new images in edit mode
+      const editDropZone = details.querySelector('.edit-drop-zone');
+      const editImageInput = details.querySelector('.edit-image-input');
+      const gallery = details.querySelector('.gallery');
+
+      // Drag and drop for edit zone
+      editDropZone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        editDropZone.classList.add('drag-over');
+      });
+      editDropZone.addEventListener('dragleave', () => {
+        editDropZone.classList.remove('drag-over');
+      });
+      editDropZone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        editDropZone.classList.remove('drag-over');
+        handleEditFiles(e.dataTransfer.files, gallery);
+      });
+
+      editDropZone.addEventListener('click', () => editImageInput.click());
+
+      editImageInput.addEventListener('change', (e) => {
+        handleEditFiles(e.target.files, gallery);
+      });
+
+      function handleEditFiles(files, gallery) {
+        [...files].forEach((file) => {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            const imgData = e.target.result;
+
+            // Add new image to gallery
+            const item = document.createElement('div');
+            item.classList.add('gallery-item');
+            item.innerHTML = `
+              <img src="${imgData}" alt="Project image">
+              <input type="text" placeholder="Caption" value="">
+              <button type="button" class="remove-thumb">Remove</button>
+            `;
+
+            // Remove image functionality
+            item.querySelector('.remove-thumb').addEventListener('click', () => {
+              item.remove();
+            });
+
+            gallery.appendChild(item);
+          };
+          reader.readAsDataURL(file);
+        });
+      }
+
+      details.querySelector('.save-project-btn').addEventListener('click', () => {
+
+        let projects = JSON.parse(localStorage.getItem('projects') || '[]');
+        const index = projects.findIndex(p => p.created === project.created);
+
+        if (index !== -1) {
+          const updated = projects[index];
+          const editSection = details.querySelector('.edit-section');
+
+          const newName = editSection.querySelector('input[type="text"]').value;
+
+          // Check if name changed and update the lookup if needed
+          if (newName !== project.name) {
+            const newIndex = projects.findIndex(p => p.name === newName);
+            if (newIndex !== -1 && newIndex !== index) {
+              // Name conflict, don't save
+              alert('A project with this name already exists!');
+              return;
+            }
+          }
+
+          updated.name = newName;
+          const textareas = editSection.querySelectorAll('textarea');
+            updated.desc = textareas[0].value;
+            updated.notes = textareas[1].value;
+          updated.status = editSection.querySelector('.status-select').value;
+          updated.urgent = editSection.querySelector('.urgent-input input').value;
+          updated.notes = editSection.querySelectorAll('textarea')[1].value; // Second textarea is notes
+          updated.modified = new Date().toISOString().split('T')[0];
+
+          const galleryItems = details.querySelectorAll('.gallery-item');
+          updated.images = [...galleryItems].map(item => ({
+            src: item.querySelector('img').src,
+            caption: item.querySelector('input').value
+          }));
+
+          updated.files = updated.images.length;
+
+          row.querySelector('td:nth-child(1)').textContent = updated.name;
+          row.querySelector('td:nth-child(2)').textContent = updated.desc;
+          row.querySelector('td:nth-child(3)').innerHTML = `<span class="status-${updated.status}">${updated.status}</span>`;
+          row.querySelector('td:nth-child(4)').textContent = updated.files;
+
+          projects[index] = updated;
+          localStorage.setItem('projects', JSON.stringify(projects));
+          details.style.display = 'none';
+
+          // Update the project reference for future saves
+          project.name = updated.name;
+
+          // Collapse the dropdown immediately
+          details.style.display = 'none';
+        } else {
+          alert('Project not found!');
+        }
+      });
+    }
+
+    function loadProjects() {
+      let projects = JSON.parse(localStorage.getItem('projects') || '[]');
+
+      projects = projects.map(project => {
+        if (typeof project.files === 'string') {
+          const match = project.files.match(/(\d+)/);
+          project.files = match ? parseInt(match[1]) : project.images ? project.images.length : 0;
+        }
+        return project;
+      });
+
+      localStorage.setItem('projects', JSON.stringify(projects));
+
+      projects.forEach(p => addProject(p));
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadProjects();
+
+      // Add event listeners for the static example row
+      initStaticExample();
+    });
+
+    function initStaticExample() {
+        // Select all rows in the table body
+        const rows = document.querySelectorAll('.projects-table tbody tr');
+
+        rows.forEach((row) => {
+          const details = row.nextElementSibling;
+
+          if (row.classList.contains('example-project') && details && details.classList.contains('project-details')) {
+
+            // ====== Disable editing for example projects ======
+            details.querySelectorAll('input, textarea, .save-project-btn').forEach(el => el.disabled = true);
+
+            // Disable delete button in main row
+            const deleteBtn = row.querySelector('.delete-btn');
+            if (deleteBtn) deleteBtn.disabled = true;
+
+            // ====== Keep toggle button functional ======
+            const toggleBtn = row.querySelector('.toggle-btn');
+            if (toggleBtn) {
+              toggleBtn.addEventListener('click', () => {
+                // Close all other details rows
+                document.querySelectorAll('.project-details').forEach(r => {
+                  if (r !== details) r.style.display = 'none';
+                });
+                // Toggle this one
+                details.style.display =
+                  details.style.display === 'table-row' ? 'none' : 'table-row';
+              });
+            }
+
+            // ====== Keep status dropdown functional ======
+            const statusSelect = details.querySelector('.status-select');
+            if (statusSelect) {
+              statusSelect.addEventListener('change', () => {
+                const urgentBox = details.querySelector('.urgent-input');
+                urgentBox.style.display =
+                  statusSelect.value === 'urgent' ? 'block' : 'none';
+              });
+            }
+
+            // Optional: prevent save click doing anything just in case
+            const saveBtn = details.querySelector('.save-project-btn');
+            if (saveBtn) {
+              saveBtn.addEventListener('click', (e) => {
+                e.preventDefault(); // does nothing
+              });
+            }
+          }
+        });
+      }
+  </script>
+
 </body>
 </html>
