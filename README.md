@@ -10,41 +10,43 @@ SnapVault is a modern web application designed for storing, managing, and sharin
 ## 🌟 Features
 
 - **Secure Storage**  
-  Organize and protect projects with structured document management.
+  Organize and manage projects using structured local storage and UI-based project tracking.
 
 - **Lightning-Fast Access**  
-  Quickly upload and access files across devices.
+  Quickly upload, retrieve, and view project data across pages.
 
-- **Team Collaboration**  
-  Share projects and collaborate in a streamlined environment.
+- **Team Collaboration (Simulated)**  
+  Project structure supports sharing and multi-user expansion in future development.
 
 - **Responsive Design**  
-  Optimized for desktop, tablet, and mobile viewing.
+  Fully optimized for desktop, tablet, and mobile devices.
 
-- **Interactive Navigation**  
-  Clean navigation bar with integrated search functionality.
+- **Interactive Navigation & Search**  
+  Navigation bar includes a live search system that filters stored projects.
 
 - **Embedded Video Demo**  
-  Includes a built-in `<video>` element demonstrating site functionality.
+  HTML5 video element demonstrates platform functionality.
 
-- **Forms & Links**
-  - Project upload form (4+ fields)
-  - External resource link
-  - Contact support link
+- **Project Management System**
+  - Create new projects via upload form  
+  - Edit project details inline  
+  - Delete projects from table view  
+  - Persist data using `localStorage`
 
-- **Custom Styling**
-  - Gradients and layered backgrounds
-  - Shadows and depth effects
-  - Interactive hover and button animations
+- **Custom UI Styling**
+  - Gradient backgrounds and layered design elements  
+  - Hover animations and button interactions  
+  - Card-based layout system for features 
 
 ---
 
 ## 🛠️ Technologies Used
 
-- **Languages:** HTML5, CSS3, JavaScript  
+- **Frontend:** HTML5, CSS3, JavaScript  
 - **Layout:** Flexbox and CSS Grid  
+- **Storage:** Browser `localStorage`  
 - **Media:** HTML5 `<video>` and responsive images  
-- **Design Approach:** Mobile-first, responsive layout  
+- **Design Approach:** Mobile-first responsive design  
 
 ---
 
@@ -64,15 +66,16 @@ SnapVault/
 
 ## ⚡ How to Use
 
-1. Open `index.html` in a browser or visit the deployed site.
-2. Navigate using the menu:
+1. Open `index.html` or visit the live site.
+2. Navigate using the top menu:
    - Home
    - Projects
    - Project Upload
    - About
-3. Use the search bar to find projects *(currently uses sample data)*.
-4. Watch the demo video to understand core functionality.
-5. Use the call-to-action buttons to explore features.
+3. Create projects using the upload form.
+4. View, edit, or delete projects on the Projects page.
+5. Use the search bar to locate saved projects.
+6. Watch the demo video for a walkthrough.
 
 ---
 
@@ -85,13 +88,14 @@ SnapVault/
 - Backgrounds: `#F5F9FF`, `#EFF4FF`, `#F3F7FF`
 
 ### Typography
-- Bold, high-contrast headings
-- Clean, readable sans-serif body text
+- Clean sans-serif font stack
+- Bold headings for hierarchy
+- High contrast for accessibility
 
 ### Layout
-- Mobile-first structure
-- Flexbox for navigation and cards
-- Grid for medium and large screen layouts
+- Mobile-first responsive design
+- Flexbox-based navigation and alignment
+- Grid-based card layout for features
 
 ---
 
@@ -102,22 +106,26 @@ SnapVault/
 - Firefox  
 - Edge  
 
-All core features, including the `<video>` element and responsive layout, are supported in modern browsers.
+All features including `localStorage`, responsive layouts, and HTML5 video are fully supported.
 
 ---
 
 ## 📹 Demo
 
-The included demo video highlights SnapVault’s core functionality, including project organization and navigation.
+The included demo video showcases:
+- Project creation
+- Project editing
+- Navigation and search functionality
+- Responsive layout behavior
 
 ---
 
 ## 📝 Notes
 
-- The search feature currently uses placeholder project data and will be expanded in future updates.
-- The project upload form meets CIS300 requirements (minimum 4 fields).
-- Built using semantic HTML5 elements:
-  `<header>`, `<nav>`, `<main>`, `<footer>`
+- Search feature currently uses localStorage-based project data.
+- Project upload form includes required CIS300 fields.
+- Built using semantic HTML5 structure:
+  `<header>`, `<nav>`, `<main>`, `<section>`, `<footer>`
 
 ---
 
