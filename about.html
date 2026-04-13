@@ -1,23 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="SnapVault is an all-in-one project management and file storage platform. Store, manage, and share your projects securely.">
-    <title>SnapVault | About</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="images/SnapVault-favicon.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="About SnapVault - Learn more about the project management platform." />
+  <title>SnapVault | About</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="images/SnapVault-favicon.png" />
 </head>
-<body  id="top">
-    <main class="under-construction">
-        <section>
-            <h1>Page Under Construction</h1>
-            <p>We're still building this page. In the meantime, you can return to the 
-                <a href="index.html">Home Page</a>.
-            </p>
-            <hr>
-            <p>Thanks for your patience!</p>
-        </section>
-    </main>
+
+<body id="top" class="about-page">
+
+  <!-- HEADER (same as index) -->
+  <header>
+    <div class="header-container">
+      <div class="branding">
+        <a href="index.html" aria-label="Go to Home">
+          <img class="logo-icon" src="images/SnapVault-logo-3.png" alt="SnapVault Icon" />
+        </a>
+        <h2 class="logo-text">
+          <a href="index.html">SnapVault</a>
+        </h2>
+      </div>
+
+      <div class="search-box header-search">
+        <input type="text" placeholder="Search..." aria-label="Search projects" />
+        <button>🔍</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAV (same as index) -->
+  <nav>
+    <div class="nav-container">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="upload.html">Project Upload</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+
+      <div class="search-box nav-search">
+        <div class="search-inner">
+          <input type="text" id="nav-search" placeholder="Search..." aria-label="Search projects">
+          <button id="nav-search-btn">🔍</button>
+        </div>
+        <div class="search-results"></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <section class="hero">
+      <h1>About SnapVault</h1>
+      <br><br>
+      <p>
+        SnapVault is a lightweight project management system designed to help you
+        organize, track, and store your projects with ease.
+      </p>
+    </section>
+
+    <section class="content">
+      <h2 class="about-subheading">What is SnapVault?</h2>
+      <p class="about-text">
+        SnapVault allows users to create projects, upload images, track progress,
+        and manage everything in one place using localStorage (no backend required).
+      </p>
+
+      <h2 class="about-subheading">Features</h2>
+      <ul>
+        <li>Project creation and editing</li>
+        <li>Image upload and gallery support</li>
+        <li>Status tracking (active, urgent, completed)</li>
+        <li>LocalStorage-based persistence</li>
+        <li>Search across all projects</li>
+      </ul>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-container">
+      <div class="footer-left">
+        <p>Contact: support@snapvault.com</p>
+        <a href="https://www.google.com" target="_blank">Explore More Online</a>
+      </div>
+      <div class="footer-center">
+        <a href="#top">
+          <img src="images/SnapVault-logo.png" alt="SnapVault Logo" class="footer-logo">
+          <span class="footer-logo-caption">TO TOP</span>
+        </a>
+      </div>
+      <div class="footer-right">
+        <p>© 2026 SnapVault</p>
+      </div>
+    </div>
+  </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchBox = document.querySelector('.header-search');
+        if (!searchBox) return;
+
+        const input = searchBox.querySelector('input');
+        const button = searchBox.querySelector('button');
+
+        let results = searchBox.querySelector('.search-results');
+        if (!results) {
+            results = document.createElement('div');
+            results.classList.add('search-results');
+            searchBox.appendChild(results);
+        }
+
+        function getProjects() {
+            return JSON.parse(localStorage.getItem('projects') || '[]');
+        }
+
+        function performSearch() {
+            const query = input.value.trim().toLowerCase();
+            results.innerHTML = '';
+
+            if (!query) return;
+
+            const projects = getProjects();
+
+            const found = projects.filter(p =>
+            (p.name && p.name.toLowerCase().includes(query)) ||
+            (p.desc && p.desc.toLowerCase().includes(query))
+            );
+
+            if (found.length) {
+            found.forEach(p => {
+                const item = document.createElement('p');
+                item.textContent = `Found project: ${p.name}`;
+                item.style.cursor = "pointer";
+
+                item.addEventListener('click', () => {
+                localStorage.setItem('searchTarget', p.name);
+                window.location.href = "projects.html";
+                });
+
+                results.appendChild(item);
+            });
+            } else {
+            const item = document.createElement('p');
+            item.textContent = `No projects found for: ${query}`;
+            results.appendChild(item);
+            }
+        }
+
+        button.addEventListener('click', performSearch);
+
+        input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') performSearch();
+        });
+        });
+    </script>
 </body>
 </html>

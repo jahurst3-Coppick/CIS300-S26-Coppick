@@ -7,209 +7,221 @@
   <title>SnapVault | New Project</title>
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body id="top" class="upload-page">
-
-<header>
-  <div class="header-container">
-    <div class="branding">
-      <a href="index.html">
-        <img class="logo-icon" src="images/SnapVault-logo-3.png" alt="SnapVault Icon">
-      </a>
-      <h2 class="logo-text"><a href="index.html">SnapVault</a></h2>
+  <header>
+    <div class="header-container">
+      <div class="branding">
+        <a href="index.html">
+          <img class="logo-icon" src="images/SnapVault-logo-3.png" alt="SnapVault Icon">
+        </a>
+        <h2 class="logo-text"><a href="index.html">SnapVault</a></h2>
+      </div>
+      <div class="search-box header-search">
+        <input type="text" placeholder="Search..." aria-label="Search projects" />
+        <button>🔍</button>
+      </div>
     </div>
-    <div class="search-box header-search">
-      <input type="text" placeholder="Search..." aria-label="Search projects" />
-      <button>🔍</button>
+  </header>
+  <nav>
+    <div class="nav-container">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="upload.html">New Project</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
     </div>
-  </div>
-</header>
-
-<nav>
-  <div class="nav-container">
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="upload.html">New Project</a></li>
-      <li><a href="about.html">About</a></li>
-    </ul>
-  </div>
-</nav>
-
-<main class="upload-page">
-  <section class="hero upload-hero-bg">
-    <h1>Add New Project</h1>
-    <p>Fill out the form below to add a new project.</p>
-  </section>
-
-  <form id="projectForm">
-
-    <label for="projectName">Project Name:</label>
-    <input type="text" id="projectName" name="projectName" required>
-
-    <label for="projectDesc">Description:</label>
-    <textarea id="projectDesc" name="projectDesc" required></textarea>
-
-    <label for="projectStatus">Status:</label>
-    <select id="projectStatus" name="projectStatus">
-      <option value="active">active</option>
-      <option value="completed">completed</option>
-      <option value="urgent">urgent</option>
-    </select>
-
-    <div class="urgent-input" id="urgentBox" style="display:none;">
-      <label for="urgentIssue">Urgent Issue:</label>
-      <input type="text" id="urgentIssue" name="urgentIssue" placeholder="Describe urgent issue">
+  </nav>
+  <main class="upload-page">
+    <section class="hero upload-hero-bg">
+      <h1>Add New Project</h1>
+      <p>Fill out the form below to add a new project.</p>
+    </section>
+    <form id="projectForm">
+      <label for="projectName">Project Name:</label>
+      <input type="text" id="projectName" name="projectName" required>
+      <label for="projectDesc">Description:</label>
+      <textarea id="projectDesc" name="projectDesc" required></textarea>
+      <label for="projectStatus">Status:</label>
+      <select id="projectStatus" name="projectStatus">
+        <option value="active">active</option>
+        <option value="completed">completed</option>
+        <option value="urgent">urgent</option>
+      </select>
+      <div class="urgent-input" id="urgentBox" style="display:none;">
+        <label for="urgentIssue">Urgent Issue:</label>
+        <input type="text" id="urgentIssue" name="urgentIssue" placeholder="Describe urgent issue">
+      </div>
+      <label for="projectNotes">Notes:</label>
+      <textarea id="projectNotes" name="projectNotes"></textarea>
+      <h3>Images</h3>
+      <div id="dropZone" class="drop-zone">
+        <p>Drag & Drop Images Here<br>or Click to Select</p>
+        <input type="file" id="imageInput" accept="image/*" multiple>
+      </div>
+      <div id="galleryPreview" class="gallery"></div>
+      <button type="submit" class="submit-btn">Add Project</button>
+    </form>
+  </main>
+  <footer>
+    <div class="footer-container">
+      <div class="footer-left">
+        <p>Contact: support@snapvault.com</p>
+        <a href="https://www.google.com" target="_blank">Explore More Online</a>
+      </div>
+      <div class="footer-center">
+        <a href="#top">
+          <img src="images/SnapVault-logo.png" alt="SnapVault Logo" class="footer-logo">
+          <span class="footer-logo-caption">TO TOP</span>
+        </a>
+      </div>
+      <div class="footer-right">
+        <p>© 2026 SnapVault</p>
+      </div>
     </div>
+  </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchBox = document.querySelector('.header-search');
+        if (!searchBox) return;
 
-    <label for="projectNotes">Notes:</label>
-    <textarea id="projectNotes" name="projectNotes"></textarea>
+        const input = searchBox.querySelector('input');
+        const button = searchBox.querySelector('button');
 
-    <h3>Images</h3>
+        let results = searchBox.querySelector('.search-results');
+        if (!results) {
+            results = document.createElement('div');
+            results.classList.add('search-results');
+            searchBox.appendChild(results);
+        }
 
-    <div id="dropZone" class="drop-zone">
-      <p>Drag & Drop Images Here<br>or Click to Select</p>
-      <input type="file" id="imageInput" accept="image/*" multiple>
-    </div>
+        function getProjects() {
+            return JSON.parse(localStorage.getItem('projects') || '[]');
+        }
 
-    <div id="galleryPreview" class="gallery"></div>
+        function performSearch() {
+            const query = input.value.trim().toLowerCase();
+            results.innerHTML = '';
 
-    <button type="submit" class="submit-btn">Add Project</button>
+            if (!query) return;
 
-  </form>
-</main>
+            const projects = getProjects();
 
-<footer>
-  <div class="footer-container">
-    <div class="footer-left">
-      <p>Contact: support@snapvault.com</p>
-      <a href="https://www.google.com" target="_blank">Explore More Online</a>
-    </div>
+            const found = projects.filter(p =>
+            (p.name && p.name.toLowerCase().includes(query)) ||
+            (p.desc && p.desc.toLowerCase().includes(query))
+            );
 
-    <div class="footer-center">
-      <a href="#top">
-        <img src="images/SnapVault-logo.png" alt="SnapVault Logo" class="footer-logo">
-        <span class="footer-logo-caption">TO TOP</span>
-      </a>
-    </div>
+            if (found.length) {
+            found.forEach(p => {
+                const item = document.createElement('p');
+                item.textContent = `Found project: ${p.name}`;
+                item.style.cursor = "pointer";
 
-    <div class="footer-right">
-      <p>© 2026 SnapVault</p>
-    </div>
-  </div>
-</footer>
+                item.addEventListener('click', () => {
+                localStorage.setItem('searchTarget', p.name);
+                window.location.href = "projects.html";
+                });
 
-<script>
-  document.getElementById("projectStatus").addEventListener("change", function () {
-    document.getElementById("urgentBox").style.display =
-      this.value === "urgent" ? "block" : "none";
-  });
+                results.appendChild(item);
+            });
+            } else {
+            const item = document.createElement('p');
+            item.textContent = `No projects found for: ${query}`;
+            results.appendChild(item);
+            }
+        }
 
-  const dropZone = document.getElementById("dropZone");
-  const imageInput = document.getElementById("imageInput");
-  const galleryPreview = document.getElementById("galleryPreview");
-  let uploadedImages = [];
+        button.addEventListener('click', performSearch);
 
-  dropZone.addEventListener("dragover", (e) => {
-    e.preventDefault();
-    dropZone.classList.add("drag-over");
-  });
-  dropZone.addEventListener("dragleave", () => {
-    dropZone.classList.remove("drag-over");
-  });
-
-  dropZone.addEventListener("drop", (e) => {
-    e.preventDefault();
-    dropZone.classList.remove("drag-over");
-    handleFiles(e.dataTransfer.files);
-  });
-
-  dropZone.addEventListener("click", () => imageInput.click());
-  imageInput.addEventListener("change", () => handleFiles(imageInput.files));
-
-  function handleFiles(files) {
-    [...files].forEach((file) => {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const imgData = e.target.result;
-
-        uploadedImages.push({ src: imgData, caption: "" });
-        renderGallery();
-      };
-      reader.readAsDataURL(file);
+        input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') performSearch();
+        });
+        });
+    document.getElementById("projectStatus").addEventListener("change", function () {
+      document.getElementById("urgentBox").style.display =
+        this.value === "urgent" ? "block" : "none";
     });
-  }
-
-  function renderGallery() {
+    const dropZone = document.getElementById("dropZone");
+    const imageInput = document.getElementById("imageInput");
+    const galleryPreview = document.getElementById("galleryPreview");
+    let uploadedImages = [];
+    dropZone.addEventListener("dragover", (e) => {
+      e.preventDefault();
+      dropZone.classList.add("drag-over");
+    });
+    dropZone.addEventListener("dragleave", () => {
+      dropZone.classList.remove("drag-over");
+    });
+    dropZone.addEventListener("drop", (e) => {
+      e.preventDefault();
+      dropZone.classList.remove("drag-over");
+      handleFiles(e.dataTransfer.files);
+    });
+    dropZone.addEventListener("click", () => imageInput.click());
+    imageInput.addEventListener("change", () => handleFiles(imageInput.files));
+    function handleFiles(files) {
+      [...files].forEach((file) => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const imgData = e.target.result;
+          uploadedImages.push({ src: imgData, caption: "" });
+          renderGallery();
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+    function renderGallery() {
+      galleryPreview.innerHTML = "";
+      uploadedImages.forEach((img, index) => {
+        const item = document.createElement("div");
+        item.classList.add("gallery-item"); 
+        item.innerHTML = `
+          <img src="${img.src}">
+          <input type="text" placeholder="Caption" value="${img.caption}">
+          <button type="button" class="remove-thumb">Remove</button>
+        `;
+        item.querySelector("input").addEventListener("input", (e) => {
+          uploadedImages[index].caption = e.target.value;
+        });
+        item.querySelector(".remove-thumb").addEventListener("click", () => {
+          uploadedImages.splice(index, 1);
+          renderGallery();
+        });
+        galleryPreview.appendChild(item);
+      });
+    }
+    const projectForm = document.getElementById("projectForm");
+    projectForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const project = {
+      name: document.getElementById("projectName").value.trim(),
+      desc: document.getElementById("projectDesc").value.trim(),
+      status: document.getElementById("projectStatus").value,
+      urgent: document.getElementById("urgentIssue").value,
+      notes: document.getElementById("projectNotes").value,
+      files: uploadedImages.length,
+      created: new Date().toISOString().split("T")[0],
+      modified: new Date().toISOString().split("T")[0],
+      images: uploadedImages
+    };
+    let projects = JSON.parse(localStorage.getItem("projects") || "[]");
+    if (projects.some(p => p.name === project.name)) {
+      alert("Project name already exists!");
+      return;
+    }
+    projects.push(project);
+    localStorage.setItem("projects", JSON.stringify(projects));
+    console.log("Saved projects:", JSON.parse(localStorage.getItem("projects")));
+    console.log("Saved projects:", projects);
+    projectForm.reset();
+    uploadedImages = [];
     galleryPreview.innerHTML = "";
-
-    uploadedImages.forEach((img, index) => {
-      const item = document.createElement("div");
-      item.classList.add("gallery-item");
-
-      item.innerHTML = `
-        <img src="${img.src}">
-        <input type="text" placeholder="Caption" value="${img.caption}">
-        <button type="button" class="remove-thumb">Remove</button>
-      `;
-
-      item.querySelector("input").addEventListener("input", (e) => {
-        uploadedImages[index].caption = e.target.value;
-      });
-
-      item.querySelector(".remove-thumb").addEventListener("click", () => {
-        uploadedImages.splice(index, 1);
-        renderGallery();
-      });
-
-      galleryPreview.appendChild(item);
-    });
-  }
-
-  const projectForm = document.getElementById("projectForm");
-
-  projectForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  const project = {
-    name: document.getElementById("projectName").value.trim(),
-    desc: document.getElementById("projectDesc").value.trim(),
-    status: document.getElementById("projectStatus").value,
-    urgent: document.getElementById("urgentIssue").value,
-    notes: document.getElementById("projectNotes").value,
-    files: uploadedImages.length,
-    created: new Date().toISOString().split("T")[0],
-    modified: new Date().toISOString().split("T")[0],
-    images: uploadedImages
-  };
-
-  let projects = JSON.parse(localStorage.getItem("projects") || "[]");
-
-  // Prevent duplicate names
-  if (projects.some(p => p.name === project.name)) {
-    alert("Project name already exists!");
-    return;
-  }
-
-  projects.push(project);
-
-  localStorage.setItem("projects", JSON.stringify(projects));
-  console.log("Saved projects:", JSON.parse(localStorage.getItem("projects")));
-
-  console.log("Saved projects:", projects); // optional debug
-
-  // ✅ RESET FORM FIRST
-  projectForm.reset();
-  uploadedImages = [];
-  galleryPreview.innerHTML = "";
-  document.getElementById("urgentBox").style.display = "none";
-
-  // ✅ THEN REDIRECT (small delay fixes your issue)
-  setTimeout(() => {
-    //window.location.href = "projects.html";
-  }, 100);
-});
-</script>
-
+    document.getElementById("urgentBox").style.display = "none";
+    setTimeout(() => {
+      //window.location.href = "projects.html";
+    }, 100);
+  });
+  </script>
 </body>
 </html>

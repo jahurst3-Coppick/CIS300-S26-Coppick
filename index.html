@@ -140,46 +140,65 @@
         </div>
     </footer>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
+        const searchBox = document.querySelector('.header-search');
+        if (!searchBox) return;
 
-            const searches = document.querySelectorAll('.search-box');
+        const input = searchBox.querySelector('input');
+        const button = searchBox.querySelector('button');
 
-            const projects = ["Project Alpha", "Project Beta", "Project Gamma"];
+        // Create results container if it doesn't exist
+        let results = searchBox.querySelector('.search-results');
+        if (!results) {
+            results = document.createElement('div');
+            results.classList.add('search-results');
+            searchBox.appendChild(results);
+        }
 
-            searches.forEach(search => {
-                const input = search.querySelector('input');
-                const button = search.querySelector('button');
-                const results = search.querySelector('.search-results');
+        function getProjects() {
+            return JSON.parse(localStorage.getItem('projects') || '[]');
+        }
 
-                function performSearch() {
-                    const query = input.value.trim().toLowerCase();
-                    if (results) results.innerHTML = '';
+        function performSearch() {
+            const query = input.value.trim().toLowerCase();
+            results.innerHTML = '';
 
-                    if (!query) return;
+            if (!query) return;
 
-                    const found = projects.filter(p => p.toLowerCase().includes(query));
+            const projects = getProjects();
 
-                    const container = results || search;
+            const found = projects.filter(p =>
+            (p.name && p.name.toLowerCase().includes(query)) ||
+            (p.desc && p.desc.toLowerCase().includes(query))
+            );
 
-                    if (found.length) {
-                        found.forEach(pj => {
-                            const p = document.createElement('p');
-                            p.textContent = "Found project: " + pj;
-                            container.appendChild(p);
-                        });
-                    } else {
-                        const p = document.createElement('p');
-                        p.textContent = "No projects found for: " + query;
-                        container.appendChild(p);
-                    }
-                }
+            if (found.length) {
+            found.forEach(p => {
+                const item = document.createElement('p');
+                item.textContent = `Found project: ${p.name}`;
+                item.style.cursor = "pointer";
 
-                button.addEventListener('click', performSearch);
-                input.addEventListener('keypress', e => {
-                    if (e.key === 'Enter') performSearch();
+                // 🔥 Navigate to projects page and store target
+                item.addEventListener('click', () => {
+                localStorage.setItem('searchTarget', p.name);
+                window.location.href = "projects.html";
                 });
+
+                results.appendChild(item);
             });
+            } else {
+            const item = document.createElement('p');
+            item.textContent = `No projects found for: ${query}`;
+            results.appendChild(item);
+            }
+        }
+
+        button.addEventListener('click', performSearch);
+
+        input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') performSearch();
         });
-    </script>
+        });
+        </script>
 </body>
 </html>
