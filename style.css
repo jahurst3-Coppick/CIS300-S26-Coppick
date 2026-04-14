@@ -45,9 +45,6 @@ body {
 .upload-page {
   background: linear-gradient(to bottom, var(--bg-1), white);
 }
-/* ============================================
-   UPLOAD PAGE HERO SECTION
-   ============================================ */
 .upload-hero-bg {
   position: relative;
   min-height: 250px;
@@ -81,18 +78,6 @@ body {
   position: relative;
   z-index: 1;
 }
-
-/* ============================================
-   UPLOAD HERO - MEDIUM SCREENS
-   ============================================ */
-@media (max-width: 1150px) {
-  .projects-hero {
-    height: 350px;
-  }
-  .upload-hero-bg {
-    min-height: 280px;
-  }
-}
 .upload-hero-bg h1,
 .upload-hero-bg p {
   width: 100%;
@@ -116,42 +101,6 @@ body {
 }
 .hero-bg-image {
     max-width: 100%;
-  }
-/* ============================================
-   UPLOAD HERO - MEDIUM SCREENS
-   ============================================ */
-@media (max-width: 1150px) {
-  .projects-hero {
-    height: 350px;
-  }
-  .upload-hero-bg {
-    min-height: 280px;
-  }
-  .hero-bg-image {
-    max-width: 80%;
-  }
-}
-/* ============================================
-   UPLOAD HERO - SMALL SCREENS
-   ============================================ */
-@media (max-width: 600px) {
-  .projects-hero {
-    height: 200px;
-  }
-  .upload-hero-bg {
-    min-height: 220px;
-  }
-}
-/* ============================================
-   UPLOAD HERO - EXTRA SMALL SCREENS
-   ============================================ */
-@media (max-width: 440px) {
-  .projects-hero {
-    height: 310px;
-  }
-  .upload-hero-bg {
-    min-height: 250px;
-  }
 }
 .content, .card, .hero {
   color: var(--text);
@@ -865,6 +814,11 @@ transition: transform 0.1s ease, background-color 0.2s ease;
   transform: scale(1.02);
   transition: transform 0.2s ease;
 }
+.video h3 {
+  margin-bottom: 15px;
+  color: var(--primary);
+  font-size: 1.8em;
+}
 .cta-btn {
   background-color: var(--primary);
   text-decoration: none;
@@ -994,7 +948,7 @@ html {
   margin-top: 25px;
 }
 /* Extra Small */
-@media (max-width: 460px) {
+@media (max-width: 440px) {
   .projects-table,
   .projects-table thead,
   .projects-table tbody,
@@ -1050,6 +1004,20 @@ html {
     justify-content: flex-start;
     gap: 10px;
   }
+  .projects-hero {
+    height: 310px;
+  }
+  .upload-hero-bg {
+    min-height: 250px;
+  }
+}
+@media (max-width: 600px) {
+  .projects-hero {
+    height: 200px;
+  }
+  .upload-hero-bg {
+    min-height: 220px;
+  }
 }
 /* Small */
 @media (min-width: 600px) {
@@ -1093,9 +1061,19 @@ html {
     grid-column: 3;
   }
 }
-/* ============================================
-   LARGE SCREENS
-   ============================================ */
+/* Medium Screens */
+@media (max-width: 1150px) {
+  .projects-hero {
+    height: 350px;
+  }
+  .upload-hero-bg {
+    min-height: 280px;
+  }
+  .hero-bg-image {
+    max-width: 80%;
+  }
+}
+/* Large Screens */
 @media (min-width: 1024px) {
   .search-box {
     justify-content: flex-end;
