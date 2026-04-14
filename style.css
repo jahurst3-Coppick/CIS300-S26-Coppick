@@ -36,7 +36,7 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: url('images/background.jpg') no-repeat center;
+  background: url('images/background.png') no-repeat center;
   background-size: cover;
   background-position: center 10%;
   opacity: 0.4;
@@ -56,51 +56,39 @@ body {
   text-align: center;
   overflow: hidden;
 }
-.upload-hero-bg::before {
-  content: "";
+.upload-hero-bg h1,
+.upload-hero-bg p {
+  width: 100%;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.upload-hero-bg * {
+  position: relative;
+  z-index: 1;
+}
+.upload-hero-bg h1,
+.upload-hero-bg p {
+  width: 100%;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 1;
+}
+.hero-bg-image {
   position: absolute;
   inset: 0;
-  background-image: url('images/background1.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center bottom;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
   opacity: 0.4;
   z-index: 0;
 }
-.upload-hero-bg h1,
-.upload-hero-bg p {
-  width: 100%;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-}
 .upload-hero-bg * {
   position: relative;
   z-index: 1;
-}
-.upload-hero-bg h1,
-.upload-hero-bg p {
-  width: 100%;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
-  z-index: 1;
-}
-.hero-bg-image {
-  display: block;
-  width: auto;
-  max-width: 250px;
-  height: auto;
-  margin: -5px auto 10px;
-  opacity: 0.8;
-}
-.upload-hero-bg * {
-  position: relative;
-  z-index: 1;
-}
-.hero-bg-image {
-    max-width: 100%;
 }
 .content, .card, .hero {
   color: var(--text);
