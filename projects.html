@@ -232,242 +232,228 @@
           document.querySelectorAll('.project-details').forEach(r => {
             if (r !== details) r.style.display = 'none';
           });
+
           details.style.display =
             details.style.display === 'table-row' ? 'none' : 'table-row';
         });
       });
     }
+
     function initDeleteButtons() {
       document.querySelectorAll('.delete-btn').forEach(btn => {
         btn.addEventListener('click', () => {
           const row = btn.closest('tr');
+
+          // 🔒 prevent deleting locked/sample projects
+          if (row.classList.contains('locked')) return;
+
           const details = row.nextElementSibling;
+
           if (confirm("Delete this project?")) {
             row.remove();
             details.remove();
+
             let projects = JSON.parse(localStorage.getItem('projects') || '[]');
             const name = row.querySelector('td').innerText;
+
             projects = projects.filter(p => p.name !== name);
             localStorage.setItem('projects', JSON.stringify(projects));
           }
         });
       });
     }
+
     function initUrgentSelect(select) {
       select.addEventListener('change', () => {
         const urgentBox = select.closest('.edit-section').querySelector('.urgent-input');
         urgentBox.style.display = select.value === 'urgent' ? 'block' : 'none';
       });
     }
+
     function addProject(project) {
       const table = document.querySelector('.projects-table tbody');
-      let filesCount = project.files;
-      if (typeof project.files === 'string') {
-        const match = project.files.match(/(\d+)/);
-        filesCount = match ? parseInt(match[1]) : 0;
-      }
+
       const row = document.createElement('tr');
       row.innerHTML = `
         <td>${project.name}</td>
         <td>${project.desc}</td>
         <td><span class="status-${project.status}">${project.status}</span></td>
-        <td>${filesCount}</td>
+        <td>${project.images.length}</td>
         <td>
           <button class="toggle-btn">🔍✏️</button>
           <button class="delete-btn">🗑️</button>
         </td>
       `;
+
       const details = document.createElement('tr');
       details.classList.add('project-details');
+
       details.innerHTML = `
         <td colspan="5">
           <div class="details-content">
             <div class="edit-section">
               <label>Project Name:</label>
               <input type="text" value="${project.name}">
+
               <label>Description:</label>
               <textarea>${project.desc}</textarea>
+
               <label>Status:</label>
               <select class="status-select">
                 <option ${project.status === 'active' ? 'selected' : ''}>active</option>
                 <option ${project.status === 'completed' ? 'selected' : ''}>completed</option>
                 <option ${project.status === 'urgent' ? 'selected' : ''}>urgent</option>
               </select>
-              <div class="urgent-input" style="${project.status==='urgent' ? 'display:block;' : 'display:none;'}">
+
+              <div class="urgent-input" style="${project.status === 'urgent' ? 'display:block;' : 'display:none;'}">
                 <label>Urgent Issue:</label>
-                <input type="text" value="${project.urgent || ''}" placeholder="Describe urgent issue">
+                <input type="text" value="${project.urgent || ''}">
               </div>
+
               <label>Notes:</label>
               <textarea>${project.notes}</textarea>
+
               <div class="dates">
                 <p><strong>Created:</strong> ${project.created}</p>
                 <p><strong>Last Modified:</strong> ${project.modified}</p>
               </div>
-              <h4>Add More Images</h4>
+
               <div class="edit-drop-zone">
                 <p>Drag & Drop Images Here<br>or Click to Select</p>
                 <input type="file" class="edit-image-input" accept="image/*" multiple>
               </div>
+
               <button type="button" class="save-project-btn">Save Changes</button>
             </div>
+
             <div class="gallery" style="display:flex; margin-top:10px;">
               ${project.images.map(img => `
                 <div class="gallery-item">
-                  <img src="${img.src}" alt="Project image">
+                  <img src="${img.src}">
                   <input type="text" value="${img.caption}">
+                  <button type="button" class="remove-thumb">✖</button>
                 </div>
               `).join('')}
             </div>
           </div>
         </td>
       `;
+
       table.appendChild(row);
       table.appendChild(details);
-      row.querySelector('.toggle-btn').addEventListener('click', () => {
-        details.style.display = details.style.display === 'table-row' ? 'none' : 'table-row';
-      });
-      row.querySelector('.delete-btn').addEventListener('click', () => {
-        if(confirm("Delete this project?")) {
-          row.remove();
-          details.remove();
-          let projects = JSON.parse(localStorage.getItem('projects') || '[]');
-          projects = projects.filter(p => p.name !== project.name);
-          localStorage.setItem('projects', JSON.stringify(projects));
-        }
-      });
-      initUrgentSelect(details.querySelector('.status-select'));
-      const editDropZone = details.querySelector('.edit-drop-zone');
-      const editImageInput = details.querySelector('.edit-image-input');
+
       const gallery = details.querySelector('.gallery');
-      editDropZone.addEventListener('dragover', (e) => {
-        e.preventDefault();
-        editDropZone.classList.add('drag-over');
+
+      // ✅ remove existing images
+      gallery.querySelectorAll('.remove-thumb').forEach(btn => {
+        btn.addEventListener('click', () => {
+          btn.closest('.gallery-item').remove();
+        });
       });
-      editDropZone.addEventListener('dragleave', () => {
-        editDropZone.classList.remove('drag-over');
+
+      // ✅ upload images
+      const dropZone = details.querySelector('.edit-drop-zone');
+      const input = details.querySelector('.edit-image-input');
+
+      dropZone.addEventListener('click', () => input.click());
+
+      input.addEventListener('change', (e) => {
+        handleFiles(e.target.files, gallery);
       });
-      editDropZone.addEventListener('drop', (e) => {
-        e.preventDefault();
-        editDropZone.classList.remove('drag-over');
-        handleEditFiles(e.dataTransfer.files, gallery);
-      });
-      editDropZone.addEventListener('click', () => editImageInput.click());
-      editImageInput.addEventListener('change', (e) => {
-        handleEditFiles(e.target.files, gallery);
-      });
-      function handleEditFiles(files, gallery) {
-        [...files].forEach((file) => {
+
+      function handleFiles(files, gallery) {
+        [...files].forEach(file => {
           const reader = new FileReader();
+
           reader.onload = (e) => {
-            const imgData = e.target.result;
             const item = document.createElement('div');
             item.classList.add('gallery-item');
+
             item.innerHTML = `
-              <img src="${imgData}" alt="Project image">
-              <input type="text" placeholder="Caption" value="">
-              <button type="button" class="remove-thumb">Remove</button>
+              <img src="${e.target.result}">
+              <input type="text" placeholder="Caption">
+              <button type="button" class="remove-thumb">✖</button>
             `;
+
             item.querySelector('.remove-thumb').addEventListener('click', () => {
               item.remove();
             });
+
             gallery.appendChild(item);
           };
+
           reader.readAsDataURL(file);
         });
       }
+
+      // ✅ save changes
       details.querySelector('.save-project-btn').addEventListener('click', () => {
         let projects = JSON.parse(localStorage.getItem('projects') || '[]');
+
         const index = projects.findIndex(p => p.created === project.created);
-        if (index !== -1) {
-          const updated = projects[index];
-          const editSection = details.querySelector('.edit-section');
-          const newName = editSection.querySelector('input[type="text"]').value;
-          if (newName !== project.name) {
-            const newIndex = projects.findIndex(p => p.name === newName);
-            if (newIndex !== -1 && newIndex !== index) {
-              alert('A project with this name already exists!');
-              return;
-            }
-          }
-          updated.name = newName;
-          const textareas = editSection.querySelectorAll('textarea');
-            updated.desc = textareas[0].value;
-            updated.notes = textareas[1].value;
-          updated.status = editSection.querySelector('.status-select').value;
-          updated.urgent = editSection.querySelector('.urgent-input input').value;
-          updated.notes = editSection.querySelectorAll('textarea')[1].value; // Second textarea is notes
-          updated.modified = new Date().toISOString().split('T')[0];
-          const galleryItems = details.querySelectorAll('.gallery-item');
-          updated.images = [...galleryItems].map(item => ({
-            src: item.querySelector('img').src,
-            caption: item.querySelector('input').value
-          }));
-          updated.files = updated.images.length;
-          row.querySelector('td:nth-child(1)').textContent = updated.name;
-          row.querySelector('td:nth-child(2)').textContent = updated.desc;
-          row.querySelector('td:nth-child(3)').innerHTML = `<span class="status-${updated.status}">${updated.status}</span>`;
-          row.querySelector('td:nth-child(4)').textContent = updated.files;
-          projects[index] = updated;
-          localStorage.setItem('projects', JSON.stringify(projects));
-          details.style.display = 'none';
-          project.name = updated.name;
-          details.style.display = 'none';
-        } else {
-          alert('Project not found!');
-        }
+        if (index === -1) return;
+
+        const edit = details.querySelector('.edit-section');
+
+        projects[index].name = edit.querySelector('input').value;
+        projects[index].desc = edit.querySelectorAll('textarea')[0].value;
+        projects[index].notes = edit.querySelectorAll('textarea')[1].value;
+        projects[index].status = edit.querySelector('.status-select').value;
+        projects[index].urgent = edit.querySelector('.urgent-input input').value;
+        projects[index].modified = new Date().toISOString().split('T')[0];
+
+        const items = details.querySelectorAll('.gallery-item');
+        projects[index].images = [...items].map(item => ({
+          src: item.querySelector('img').src,
+          caption: item.querySelector('input').value
+        }));
+
+        localStorage.setItem('projects', JSON.stringify(projects));
+
+        location.reload();
       });
+
+      initUrgentSelect(details.querySelector('.status-select'));
     }
+
     function loadProjects() {
-      let projects = JSON.parse(localStorage.getItem('projects') || '[]');
-      projects = projects.map(project => {
-        if (typeof project.files === 'string') {
-          const match = project.files.match(/(\d+)/);
-          project.files = match ? parseInt(match[1]) : project.images ? project.images.length : 0;
-        }
-        return project;
-      });
-      localStorage.setItem('projects', JSON.stringify(projects));
-      projects.forEach(p => addProject(p));
+      const projects = JSON.parse(localStorage.getItem('projects') || '[]');
+      projects.forEach(addProject);
     }
+
+    function initStaticExample() {
+      document.querySelectorAll('.example-project.locked').forEach(row => {
+        const details = row.nextElementSibling;
+
+        if (!details) return;
+
+        // disable inputs
+        details.querySelectorAll('input, textarea, select').forEach(el => {
+          el.disabled = true;
+        });
+
+        // hide buttons
+        const saveBtn = details.querySelector('.save-project-btn');
+        if (saveBtn) saveBtn.style.display = 'none';
+
+        details.querySelectorAll('.remove-thumb').forEach(btn => {
+          btn.style.display = 'none';
+        });
+
+        const dropZone = details.querySelector('.edit-drop-zone');
+        if (dropZone) dropZone.style.display = 'none';
+
+        const deleteBtn = row.querySelector('.delete-btn');
+        if (deleteBtn) deleteBtn.disabled = true;
+      });
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       loadProjects();
+      initToggleButtons();
+      initDeleteButtons();
       initStaticExample();
     });
-    function initStaticExample() {
-        const rows = document.querySelectorAll('.projects-table tbody tr');
-        rows.forEach((row) => {
-          const details = row.nextElementSibling;
-          if (row.classList.contains('example-project') && details && details.classList.contains('project-details')) {
-            details.querySelectorAll('input, textarea, .save-project-btn').forEach(el => el.disabled = true);
-            const deleteBtn = row.querySelector('.delete-btn');
-            if (deleteBtn) deleteBtn.disabled = true;
-            const toggleBtn = row.querySelector('.toggle-btn');
-            if (toggleBtn) {
-              toggleBtn.addEventListener('click', () => {
-                document.querySelectorAll('.project-details').forEach(r => {
-                  if (r !== details) r.style.display = 'none';
-                });
-                details.style.display =
-                  details.style.display === 'table-row' ? 'none' : 'table-row';
-              });
-            }
-            const statusSelect = details.querySelector('.status-select');
-            if (statusSelect) {
-              statusSelect.addEventListener('change', () => {
-                const urgentBox = details.querySelector('.urgent-input');
-                urgentBox.style.display =
-                  statusSelect.value === 'urgent' ? 'block' : 'none';
-              });
-            }
-            const saveBtn = details.querySelector('.save-project-btn');
-            if (saveBtn) {
-              saveBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-              });
-            }
-          }
-        });
-      }
   </script>
 </body>
 </html>

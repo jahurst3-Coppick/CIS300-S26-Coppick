@@ -56,13 +56,6 @@ body {
   text-align: center;
   overflow: hidden;
 }
-.upload-hero-bg h1,
-.upload-hero-bg p {
-  width: 100%;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-}
 .upload-hero-bg * {
   position: relative;
   z-index: 1;
@@ -76,19 +69,12 @@ body {
   position: relative;
   z-index: 1;
 }
-.hero-bg-image {
-  position: absolute;
-  inset: 0;
+.hero-foreground-image {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center bottom;
-  opacity: 0.4;
-  z-index: 0;
-}
-.upload-hero-bg * {
-  position: relative;
-  z-index: 1;
+  max-height: 180px;
+  object-fit: contain;
+  margin-bottom: 20px;
+  display: block;
 }
 .content, .card, .hero {
   color: var(--text);
@@ -102,6 +88,10 @@ a:focus, button:focus, input:focus {
 header {
   background-color: var(--primary);
   padding: 5px 20px;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .header-container {
   display: flex;
@@ -404,6 +394,20 @@ body.upload-page form {
 .content li:nth-child(3) { 
   animation-delay: 0.6s; 
 }
+body.about-page {
+  position: relative;
+  min-height: 100vh;
+}
+body.about-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("images/umit-yildirim-9OB46apMbC4-unsplash.jpg") center/cover no-repeat;
+  opacity: 0.15; /* adjust this */
+  z-index: -1;
+  pointer-events: none;
+  filter: blur(.1px);
+}
 .about-subheading {
   font-size: 2em;
   margin-bottom: 20px;
@@ -535,7 +539,6 @@ body.upload-page form {
   transform: translateY(3px);
   box-shadow: 0 0 0 #222;
 }
-/* Action Buttons */
 .view-btn,
 .edit-btn,
 .delete-btn {
@@ -558,7 +561,6 @@ body.upload-page form {
 .delete-btn:hover {
   transform: scale(1.2);
 }
-/* Form Inside Dropdown */
 .edit-section {
   display: flex;
   flex-direction: column;
@@ -571,7 +573,6 @@ body.upload-page form {
   border-radius: 6px;
   border: 1px solid #ccc;
 }
-/* Gallery*/
 .gallery {
   display: flex;
   flex-wrap: wrap;
@@ -587,7 +588,6 @@ body.upload-page form {
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-/* Hover Zoom */
 .gallery img:hover {
   transform: scale(1.8);
   z-index: 10;
@@ -672,7 +672,6 @@ body.upload-page form {
   display: none;
   margin-top: 10px;
 }
-/* Form */
 form {
   max-width: 700px;
   margin: 20px auto;
@@ -732,7 +731,6 @@ textarea {
 .edit-image-input {
   display: none;
 }
-/* Save Project Button */
 .save-project-btn {
 display: block;
 width: 100%; max-width: 300px;
@@ -810,6 +808,10 @@ footer {
   text-align: center;
   padding: 8px 0;
   text-decoration: none;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .cta {
   max-width: 1024px;
@@ -834,7 +836,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1024px;
+  width: 100%;
   margin: 0 auto;
   padding: 0 8px;
   gap: 10px;
@@ -981,6 +983,10 @@ html {
   .upload-hero-bg {
     min-height: 220px;
   }
+  body.about-page::before {
+    background-position: center;
+    opacity: 0.12;
+  }
 }
 /* Small */
 @media (min-width: 600px) {
@@ -1066,7 +1072,7 @@ html {
   margin-right: 0;
   padding-left: 20px;
   padding-right: 20px;
-  width: 100vw;
+  width: 100%;
   position: relative;
   left: 50%;
   right: 50%;
