@@ -3,12 +3,54 @@
  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="SnapVault is an all-in-one project management and file storage platform. Store, manage, and share your projects securely.">
+    <meta name="description" content="Page not found on SnapVault. The page you are looking for may have been moved or deleted. Return to the 
+        homepage to continue managing your projects.">
+    <meta name="keywords" content="project management, file storage, upload projects, organize files, SnapVault, collaboration, task tracking">
     <title>SnapVault | Page Not Found</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="images/SnapVault-favicon.png">
  </head>
  <body>
+    <header>
+        <div class="header-container">
+            <div class="branding">
+                <a href="index.html" aria-label="Go to Home">
+                  <img class="logo-icon" src="images/SnapVault-logo-3.png" alt="SnapVault Icon" />
+                </a>
+                <h2 class="logo-text">
+                    <a href="index.html" aria-label="Go to Home">
+                        SnapVault
+                    </a>
+                </h2>
+            </div>
+            <div class="search-box header-search">
+                <div class="search-inner">
+                    <input type="text" placeholder="Search..." aria-label="Search projects">
+                    <button type="button" aria-label="Search">🔍</button>
+                </div>
+                <div class="search-results"></div>
+            </div>
+        </div>
+    </header>
+    <nav>
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="upload.html">New Project</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+            <div class="search-box nav-search">
+                <div class="search-inner">
+                    <input type="text" id="nav-search" placeholder="Search..." aria-label="Search projects">
+                    <button type="button" aria-label="Search" id="nav-search-btn">
+                        🔍
+                    </button>
+                </div>
+                <div class="search-results"></div>
+            </div>
+        </div>
+    </nav>
     <main class="error-page">
         <div class="logo-container">
             <img src="images/SnapVault-logo.png" alt="SnapVault Logo" class="logo-icon">
@@ -29,5 +71,108 @@
             </div>
         </section>
     </main>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-left">
+                <div class="email-wrapper">
+                <p>
+                    Contact:
+                    <span id="emailCopy" class="email-copy">
+                    support@snapvault.com
+                    </span>
+                </p>
+                <div id="toast" class="email-toast">Email Copied!</div>
+                </div>
+                <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">Explore More Online</a>
+            </div>
+            <div class="footer-center">
+                <a href="#top">
+                    <img src="images/SnapVault-logo.png" alt="SnapVault Logo" class="footer-logo">
+                    <span class="footer-logo-caption">BACK TO TOP</span>
+                </a>    
+            </div>
+            <div class="footer-right">
+                <p>© 2026 SnapVault</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            const searchBoxes = document.querySelectorAll('.header-search, .nav-search');
+            if (!searchBoxes.length) return;
+
+            function getProjects() {
+                return JSON.parse(localStorage.getItem('projects') || '[]');
+            }
+
+            searchBoxes.forEach(searchBox => {
+                const input = searchBox.querySelector('input');
+                const button = searchBox.querySelector('button');
+
+                let results = searchBox.querySelector('.search-results');
+                if (!results) {
+                    results = document.createElement('div');
+                    results.classList.add('search-results');
+                    searchBox.appendChild(results);
+                }
+
+                function performSearch() {
+                    const query = input.value.trim().toLowerCase();
+                    results.innerHTML = '';
+
+                    if (!query) return;
+
+                    const projects = getProjects();
+
+                    const found = projects.filter(p =>
+                        (p.name && p.name.toLowerCase().includes(query)) ||
+                        (p.desc && p.desc.toLowerCase().includes(query))
+                    );
+
+                    if (found.length) {
+                        found.forEach(p => {
+                            const item = document.createElement('p');
+                            item.textContent = `Found project: ${p.name}`;
+                            item.style.cursor = "pointer";
+
+                            item.addEventListener('click', () => {
+                                localStorage.setItem('searchTarget', p.name);
+                                window.location.href = "projects.html";
+                            });
+
+                            results.appendChild(item);
+                        });
+                    } else {
+                        const item = document.createElement('p');
+                        item.textContent = `No projects found for: ${query}`;
+                        results.appendChild(item);
+                    }
+                }
+
+                button.addEventListener('click', performSearch);
+
+                input.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') performSearch();
+                });
+            });
+        });
+        document.addEventListener('DOMContentLoaded', () => {
+        const email = document.getElementById("emailCopy");
+        const toast = document.getElementById("toast");
+
+            if (email && toast) {
+            email.addEventListener("click", () => {
+                navigator.clipboard.writeText("support@snapvault.com");
+
+                toast.classList.add("show");
+
+                setTimeout(() => {
+                toast.classList.remove("show");
+                }, 1500);
+            });
+            }
+        });
+    </script>
  </body>
  </html>

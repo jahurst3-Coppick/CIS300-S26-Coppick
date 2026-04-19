@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="SnapVault is an all-in-one project management and file storage platform. Store, manage, and share your projects securely." />
+  <meta name="description" content="SnapVault is a project management and file storage platform that helps you create, organize, and manage 
+    projects. Upload files, track progress, and collaborate in one secure, easy-to-use system.">
+  <meta name="keywords" content="project management, file storage, upload projects, organize files, SnapVault, collaboration, task tracking">
   <title>SnapVault | Home</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/png" href="images/SnapVault-favicon.png" />
@@ -23,7 +25,7 @@
             </div>
             <div class="search-box header-search">
                 <input type="text" placeholder="Search..." aria-label="Search projects" />
-                <button>🔍</button>
+                <button type="button" aria-label="Search">🔍</button>
             </div>
         </div>
     </header>
@@ -32,13 +34,13 @@
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="projects.html">Projects</a></li>
-                <li><a href="upload.html">Project Upload</a></li>
+                <li><a href="upload.html">New Project</a></li>
                 <li><a href="about.html">About</a></li>
             </ul>
             <div class="search-box nav-search">
                 <div class="search-inner">
                     <input type="text" id="nav-search" placeholder="Search..." aria-label="Search projects">
-                    <button id="nav-search-btn">
+                    <button type="button" aria-label="Search" id="nav-search-btn">
                         🔍
                     </button>
                 </div>
@@ -112,27 +114,33 @@
         </section>
         <section class="video">
             <h3>Demo Video</h3>
-            <video controls style="max-width: 60%; height: auto;">
-                <source src="SnapVault-demo.mp4" type="video/mp4" />
+            <video controls aria-label="SnapVault demo video" style="max-width: 60%; height: auto;">
+                <source src="SnapVault-demo.mp4" type="video/mp4"/>
                 Your browser does not support the video tag.
             </video>
         </section>
         <section class="cta" tabindex="0">
-            <a href="upload.html" class="cta-btn">Start Your First Project</a>
+            <a href="upload.html" class="cta-btn">Start Your First Project!</a>
         </section>
     </main>
     <footer>
         <div class="footer-container">
             <div class="footer-left">
+                <div class="email-wrapper">
                 <p>
-                    Contact: support@snapvault.com
+                    Contact:
+                    <span id="emailCopy" class="email-copy">
+                    support@snapvault.com
+                    </span>
                 </p>
+                <div id="toast" class="email-toast">Email Copied!</div>
+                </div>
                 <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">Explore More Online</a>
             </div>
             <div class="footer-center">
                 <a href="#top">
                     <img src="images/SnapVault-logo.png" alt="SnapVault Logo" class="footer-logo">
-                    <span class="footer-logo-caption">TO TOP</span>
+                    <span class="footer-logo-caption">BACK TO TOP</span>
                 </a>    
             </div>
             <div class="footer-right">
@@ -142,64 +150,81 @@
     </footer>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-        const searchBox = document.querySelector('.header-search');
-        if (!searchBox) return;
 
-        const input = searchBox.querySelector('input');
-        const button = searchBox.querySelector('button');
+            const searchBoxes = document.querySelectorAll('.header-search, .nav-search');
+            if (!searchBoxes.length) return;
 
-        // Create results container if it doesn't exist
-        let results = searchBox.querySelector('.search-results');
-        if (!results) {
-            results = document.createElement('div');
-            results.classList.add('search-results');
-            searchBox.appendChild(results);
-        }
-
-        function getProjects() {
-            return JSON.parse(localStorage.getItem('projects') || '[]');
-        }
-
-        function performSearch() {
-            const query = input.value.trim().toLowerCase();
-            results.innerHTML = '';
-
-            if (!query) return;
-
-            const projects = getProjects();
-
-            const found = projects.filter(p =>
-            (p.name && p.name.toLowerCase().includes(query)) ||
-            (p.desc && p.desc.toLowerCase().includes(query))
-            );
-
-            if (found.length) {
-            found.forEach(p => {
-                const item = document.createElement('p');
-                item.textContent = `Found project: ${p.name}`;
-                item.style.cursor = "pointer";
-
-                // 🔥 Navigate to projects page and store target
-                item.addEventListener('click', () => {
-                localStorage.setItem('searchTarget', p.name);
-                window.location.href = "projects.html";
-                });
-
-                results.appendChild(item);
-            });
-            } else {
-            const item = document.createElement('p');
-            item.textContent = `No projects found for: ${query}`;
-            results.appendChild(item);
+            function getProjects() {
+                return JSON.parse(localStorage.getItem('projects') || '[]');
             }
-        }
 
-        button.addEventListener('click', performSearch);
+            searchBoxes.forEach(searchBox => {
+                const input = searchBox.querySelector('input');
+                const button = searchBox.querySelector('button');
 
-        input.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') performSearch();
+                let results = searchBox.querySelector('.search-results');
+                if (!results) {
+                    results = document.createElement('div');
+                    results.classList.add('search-results');
+                    searchBox.appendChild(results);
+                }
+
+                function performSearch() {
+                    const query = input.value.trim().toLowerCase();
+                    results.innerHTML = '';
+
+                    if (!query) return;
+
+                    const projects = getProjects();
+
+                    const found = projects.filter(p =>
+                        (p.name && p.name.toLowerCase().includes(query)) ||
+                        (p.desc && p.desc.toLowerCase().includes(query))
+                    );
+
+                    if (found.length) {
+                        found.forEach(p => {
+                            const item = document.createElement('p');
+                            item.textContent = `Found project: ${p.name}`;
+                            item.style.cursor = "pointer";
+
+                            item.addEventListener('click', () => {
+                                localStorage.setItem('searchTarget', p.name);
+                                window.location.href = "projects.html";
+                            });
+
+                            results.appendChild(item);
+                        });
+                    } else {
+                        const item = document.createElement('p');
+                        item.textContent = `No projects found for: ${query}`;
+                        results.appendChild(item);
+                    }
+                }
+
+                button.addEventListener('click', performSearch);
+
+                input.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') performSearch();
+                });
+            });
         });
+        document.addEventListener('DOMContentLoaded', () => {
+            const email = document.getElementById("emailCopy");
+            const toast = document.getElementById("toast");
+
+                if (email && toast) {
+                email.addEventListener("click", () => {
+                    navigator.clipboard.writeText("support@snapvault.com");
+
+                    toast.classList.add("show");
+
+                    setTimeout(() => {
+                    toast.classList.remove("show");
+                    }, 1500);
+                });
+                }
         });
-        </script>
+    </script>
 </body>
 </html>

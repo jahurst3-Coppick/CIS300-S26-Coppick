@@ -17,6 +17,8 @@ body {
   color: var(--text);
   background: linear-gradient(to bottom, var(--bg-1), white);
   margin: 0;
+  line-height: 1.6;
+  min-width: 0;
 }
 .projects-hero {
   position: relative;
@@ -80,7 +82,8 @@ body {
   color: var(--text);
 }
 a:focus, button:focus, input:focus {
-  outline: none;
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
   box-shadow: 0 0 0 3px rgba(25, 82, 154, 0.2);
   padding: 2px;
   border-radius: 5px;
@@ -88,10 +91,8 @@ a:focus, button:focus, input:focus {
 header {
   background-color: var(--primary);
   padding: 5px 20px;
-  width: 100vw;
+  width: 100%;
   position: relative;
-  left: 50%;
-  transform: translateX(-50%);
 }
 .header-container {
   display: flex;
@@ -144,7 +145,7 @@ nav a {
   font-weight: bold;
   line-height: 1.2;
   padding: 0;
-  transition: color 2s ease-out;
+  transition: color 0.2s ease;
 }
 nav a:hover,
 nav a:visited:hover {
@@ -211,13 +212,11 @@ nav a:active {
   margin: 0 auto;
 }
 body.upload-page .hero {
-  display: block;
-  text-align: center;
-}
-body.upload-page .hero {
   padding-top: 40px;
   padding-bottom: 40px;
   margin-top: 0;
+  display: block;
+  text-align: center;
 }
 body.upload-page form {
   margin: 0 auto 40px;
@@ -231,15 +230,14 @@ body.upload-page form {
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+  line-height: 1.3;
 }
 .hero p {
   display: block;
   font-size: 1.5em;
-  margin-bottom: 10px;
   width: 100%;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 600px;
+  margin: 0 auto 20px;
 }
 .hero .cta-buttons {
   display: flex;
@@ -309,10 +307,15 @@ body.upload-page form {
   display: flex;
   flex-direction: column;
   text-align: center;
+  cursor: pointer;
   width: 220px;
   min-height: 250px;
   border-radius: 10px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.card:hover {
+  transform: translateY(-5px);
+  transition: 0.3s ease;
 }
 .card-row {
   display: flex;
@@ -430,9 +433,9 @@ body.about-page::after {
   margin: 70px auto;
   line-height: 1.6;
 }
-.projects-page, .upload-page{
+.projects-page, .upload-page {
   text-align: center;
-  padding: 0 20px 40px 20px;
+  padding: 0 0 40px 0;
 }
 .projects-page h1 {
   color: var(--primary);
@@ -462,6 +465,21 @@ body.about-page::after {
   padding: 12px;
   border-bottom: 1px solid #ddd;
   text-align: left;
+}
+.projects-table tr:hover {
+  background-color: #f5f9ff;
+}
+.projects-table caption {
+  caption-side: top;
+  text-align: center;
+  font-size: 1.8em;
+  font-weight: bold;
+  color: var(--primary);
+  padding: 15px 10px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }
 .status-active {
   background-color: var(--primary);
@@ -798,6 +816,7 @@ transition: transform 0.1s ease, background-color 0.2s ease;
   cursor: pointer;
   box-shadow: 0 5px 0 #123d73;
   transition: transform 0.1s ease, background-color 0.2s ease;
+  letter-spacing: 0.5px;
 }
 .cta-btn:hover {
   background-color: white;
@@ -816,10 +835,10 @@ footer {
   text-align: center;
   padding: 8px 0;
   text-decoration: none;
-  width: 100vw;
-  position: relative;
+  width: 100%;
+  /* position: relative;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%); */
 }
 .cta {
   max-width: 1024px;
@@ -864,6 +883,10 @@ footer {
   margin: 5px 0;
   text-align: left;
 }
+.footer-left a {
+  display: block;
+  margin-top: 5px;
+}
 .footer-center {
   text-align: center;
   transform: translateX(-50px);
@@ -884,6 +907,38 @@ html {
 }
 .footer-right {
   text-align: right;
+}
+.email-wrapper {
+  position: relative;
+  display: inline-block;
+}
+.email-copy {
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+.email-copy:hover {
+  color: var(--accent);
+}
+.email-toast {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  margin-bottom: 8px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  box-shadow: 0 5px 0 #123d73;
+  background: var(--accent);
+  color: white;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+.email-toast.show {
+  opacity: 1;
+  transform: translateX(0);
 }
 .error-page {
   text-align: center;

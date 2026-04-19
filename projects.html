@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="View and manage your projects in SnapVault.">
+  <meta name="description" content="View, manage, and update your projects in SnapVault. Track progress, edit details, and organize files all 
+    in one place.">
+  <meta name="keywords" content="project management, file storage, upload projects, organize files, SnapVault, collaboration, task tracking">
   <title>SnapVault | Projects</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="images/SnapVault-favicon.png">
@@ -20,8 +22,12 @@
         </h2>
       </div>
       <div class="search-box header-search">
-        <input type="text" placeholder="Search..." aria-label="Search projects" />
-        <button>🔍</button>
+        <div class="search-inner">
+          <input type="text" placeholder="Search..." aria-label="Search projects">
+          <button type="button" aria-label="Search">🔍</button>
+        </div>
+        <div class="search-results"></div>
+      </div>
     </div>
   </header>
   <nav>
@@ -32,6 +38,13 @@
         <li><a href="upload.html">New Project</a></li>
         <li><a href="about.html">About</a></li>
       </ul>
+      <div class="search-box nav-search">
+        <div class="search-inner">
+          <input type="text" id="nav-search" placeholder="Search..." aria-label="Search projects">
+          <button type="button" aria-label="Search" id="nav-search-btn">🔍</button>
+        </div>
+        <div class="search-results"></div>
+      </div>
     </div>
   </nav>
   <main class="projects-page">
@@ -41,6 +54,7 @@
       <a href="upload.html" class="new-project-btn">New Project</a>
     </section>
     <table class="projects-table">
+      <caption>Project Overview and Management Dashboard</caption>
       <thead>
         <tr>
           <th>Project Name</th>
@@ -57,8 +71,8 @@
           <td><span class="status-active">active</span></td>
           <td>3</td>
           <td>
-            <button class="toggle-btn">🔍✏️</button>
-            <button class="delete-btn">🗑️</button>
+            <button type="button" aria-label="Toggle Details" class="toggle-btn">🔍✏️</button>
+            <button type="button" aria-label="Delete Project" class="delete-btn">🗑️</button>
           </td>
         </tr>
         <tr class="project-details example-project locked">
@@ -100,7 +114,7 @@
                   <input type="text" value="Exterior">
                 </div>
               </div>
-              <button type="button" class="save-project-btn">Save Changes</button>
+              <button type="button" aria-label="Save Changes" type="button" class="save-project-btn">Save Changes</button>
             </div>
           </td>
         </tr>
@@ -110,8 +124,8 @@
           <td><span class="status-completed">completed</span></td>
           <td>3</td>
           <td>
-            <button class="toggle-btn">🔍✏️</button>
-            <button class="delete-btn">🗑️</button>
+            <button type="button" aria-label="Toggle Details" class="toggle-btn">🔍✏️</button>
+            <button type="button" aria-label="Delete Project" class="delete-btn">🗑️</button>
           </td>
         </tr>
         <tr class="project-details example-project locked">
@@ -153,7 +167,7 @@
                   <input type="text" value="Deck Railing">
                 </div>
               </div>
-              <button type="button" class="save-project-btn">Save Changes</button>
+              <button type="button" aria-label="Save Changes" type="button" class="save-project-btn">Save Changes</button>
             </div>
           </td>
         </tr>
@@ -163,8 +177,8 @@
           <td><span class="status-urgent">urgent</span></td>
           <td>1</td>
           <td>
-            <button class="toggle-btn">🔍✏️</button>
-            <button class="delete-btn">🗑️</button>
+            <button type="button" aria-label="Toggle Details" class="toggle-btn">🔍✏️</button>
+            <button type="button" aria-label="Delete Project" class="delete-btn">🗑️</button>
           </td>
         </tr>
         <tr class="project-details example-project locked">
@@ -198,7 +212,7 @@
                   <input type="text" value="Framing">
                 </div>
               </div>
-              <button type="button" class="save-project-btn">Save Changes</button>
+              <button type="submit" aria-label="Save Changes" class="save-project-btn">Save Changes</button>
             </div>
           </td>
         </tr>
@@ -208,13 +222,21 @@
   <footer>
     <div class="footer-container">
       <div class="footer-left">
-        <p>Contact: support@snapvault.com</p>
-        <a href="https://www.google.com" target="_blank">Explore More Online</a>
+        <div class="email-wrapper">
+          <p>
+            Contact:
+            <span id="emailCopy" class="email-copy">
+            support@snapvault.com
+            </span>
+          </p>
+          <div id="toast" class="email-toast">Email Copied!</div>
+        </div>
+        <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">Explore More Online</a>
       </div>
       <div class="footer-center">
         <a href="#top">
           <img src="images/SnapVault-logo.png" alt="SnapVault Logo" class="footer-logo">
-          <span class="footer-logo-caption">TO TOP</span>
+          <span class="footer-logo-caption">BACK TO TOP</span>
         </a>
       </div>
       <div class="footer-right">
@@ -223,6 +245,66 @@
     </div>
   </footer>
   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+      const searchBoxes = document.querySelectorAll('.header-search, .nav-search');
+      if (!searchBoxes.length) return;
+
+      function getProjects() {
+        return JSON.parse(localStorage.getItem('projects') || '[]');
+      }
+
+      searchBoxes.forEach(searchBox => {
+        const input = searchBox.querySelector('input');
+        const button = searchBox.querySelector('button');
+
+        let results = searchBox.querySelector('.search-results');
+        if (!results) {
+            results = document.createElement('div');
+            results.classList.add('search-results');
+            searchBox.appendChild(results);
+        }
+
+        function performSearch() {
+            const query = input.value.trim().toLowerCase();
+            results.innerHTML = '';
+
+            if (!query) return;
+
+            const projects = getProjects();
+
+            const found = projects.filter(p =>
+                (p.name && p.name.toLowerCase().includes(query)) ||
+                (p.desc && p.desc.toLowerCase().includes(query))
+            );
+
+            if (found.length) {
+                found.forEach(p => {
+                    const item = document.createElement('p');
+                    item.textContent = `Found project: ${p.name}`;
+                    item.style.cursor = "pointer";
+
+                    item.addEventListener('click', () => {
+                        localStorage.setItem('searchTarget', p.name);
+                        window.location.href = "projects.html";
+                    });
+
+                    results.appendChild(item);
+                });
+            } else {
+                const item = document.createElement('p');
+                item.textContent = `No projects found for: ${query}`;
+                results.appendChild(item);
+            }
+        }
+
+        button.addEventListener('click', performSearch);
+
+        input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') performSearch();
+        });
+      });
+    });
     function initToggleButtons() {
       document.querySelectorAll('.toggle-btn').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -344,14 +426,12 @@
 
       const gallery = details.querySelector('.gallery');
 
-      // ✅ remove existing images
       gallery.querySelectorAll('.remove-thumb').forEach(btn => {
         btn.addEventListener('click', () => {
           btn.closest('.gallery-item').remove();
         });
       });
 
-      // ✅ upload images
       const dropZone = details.querySelector('.edit-drop-zone');
       const input = details.querySelector('.edit-image-input');
 
@@ -386,13 +466,11 @@
         });
       }
 
-      // ✅ save changes
       details.querySelector('.save-project-btn').addEventListener('click', () => {
         let projects = JSON.parse(localStorage.getItem('projects') || '[]');
 
-        const index = projects.findIndex(p => p.created === project.created);
+        const index = projects.findIndex(p => p.name === project.name);
         if (index === -1) return;
-
         const edit = details.querySelector('.edit-section');
 
         projects[index].name = edit.querySelector('input').value;
@@ -427,12 +505,10 @@
 
         if (!details) return;
 
-        // disable inputs
         details.querySelectorAll('input, textarea, select').forEach(el => {
           el.disabled = true;
         });
 
-        // hide buttons
         const saveBtn = details.querySelector('.save-project-btn');
         if (saveBtn) saveBtn.style.display = 'none';
 
@@ -447,12 +523,27 @@
         if (deleteBtn) deleteBtn.disabled = true;
       });
     }
-
     document.addEventListener('DOMContentLoaded', () => {
       loadProjects();
       initToggleButtons();
       initDeleteButtons();
       initStaticExample();
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+      const email = document.getElementById("emailCopy");
+      const toast = document.getElementById("toast");
+
+        if (email && toast) {
+          email.addEventListener("click", () => {
+            navigator.clipboard.writeText("support@snapvault.com");
+
+            toast.classList.add("show");
+
+            setTimeout(() => {
+              toast.classList.remove("show");
+            }, 1500);
+          });
+        }
     });
   </script>
 </body>
