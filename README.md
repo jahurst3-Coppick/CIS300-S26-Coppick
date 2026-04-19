@@ -99,6 +99,15 @@ SnapVault/
 
 ---
 
+## ♿ Accessibility & Best Practices
+
+- Semantic HTML5 structure used (`header`, `nav`, `main`, `section`, `footer`)
+- Responsive design for mobile, tablet, and desktop
+- Color contrast maintained for readability
+- Alt text included for meaningful images
+
+---
+
 ## 💻 Browser Support
 
 - Chrome  
@@ -129,7 +138,7 @@ The included demo video showcases:
 
 ---
 
-## 🔗 Links
+## 🔗 Navigation
 
 - Home
 - Projects
