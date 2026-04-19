@@ -14,7 +14,7 @@
     <div class="header-container">
       <div class="branding">
         <a href="index.html">
-          <img class="logo-icon" src="images/SnapVault-logo-3.png" alt="SnapVault Icon">
+          <img class="logo-icon" src="images/SnapVault-logo-3.png" alt="SnapVault logo with camera lens and lock">
         </a>
         <h2 class="logo-text">
           <a href="index.html">SnapVault</a>
@@ -23,7 +23,7 @@
       <div class="search-box header-search">
         <div class="search-inner">
           <input type="text" placeholder="Search..." aria-label="Search projects">
-          <button type="button" aria-label="Search">🔍</button>
+          <button aria-hidden="true" type="button" aria-label="Search">🔍</button>
         </div>
         <div class="search-results"></div>
       </div>
@@ -41,7 +41,7 @@
       <div class="search-box nav-search">
         <div class="search-inner">
           <input type="text" id="nav-search" placeholder="Search..." aria-label="Search projects">
-          <button type="button" aria-label="Search" id="nav-search-btn">🔍</button>
+          <button aria-hidden="true" type="button" aria-label="Search" id="nav-search-btn">🔍</button>
         </div>
         <div class="search-results"></div>
       </div>
@@ -49,7 +49,7 @@
   </nav>
 
   <main class="projects-page">
-    <section class="projects-hero hero-bg">
+    <section class="projects-hero hero-bg" role="img" aria-label="SnapVault background image showing project tools">
       <h1>Projects</h1>
       <p>Manage and track all your projects in one place</p>
       <a href="upload.html" class="new-project-btn">New Project</a>
@@ -75,8 +75,8 @@
           <td><span class="status-active">active</span></td>
           <td>3</td>
           <td>
-            <button type="button" aria-label="Toggle Details" class="toggle-btn">🔍✏️</button>
-            <button type="button" aria-label="Delete Project" class="delete-btn">🗑️</button>
+            <button aria-hidden="true" type="button" aria-label="Toggle Details" class="toggle-btn">🔍✏️</button>
+            <button aria-hidden="true" type="button" aria-label="Delete Project" class="delete-btn">🗑️</button>
           </td>
         </tr>
 
@@ -107,15 +107,15 @@
               </div>
               <div class="gallery">
                 <div class="gallery-item">
-                  <img src="images/sample1.jpg" alt="Project Framing Image">
+                  <img src="images/sample1.jpg" alt="House framing stage of construction project">
                   <input id="example1-gallery1" type="text" value="Framing">
                 </div>
                 <div class="gallery-item">
-                  <img src="images/sample2.jpg" alt="Project Trusses Image">
+                  <img src="images/sample2.jpg" alt="House trusses stage of construction project">
                   <input id="example1-gallery2" type="text" value="Trusses">
                 </div>
                 <div class="gallery-item">
-                  <img src="images/sample3.jpg" alt="Project Exterior Image">
+                  <img src="images/sample3.jpg" alt="Project exterior image of construction project">
                   <input id="example1-gallery3" type="text" value="Exterior">
                 </div>
               </div>
@@ -130,8 +130,8 @@
           <td><span class="status-completed">completed</span></td>
           <td>3</td>
           <td>
-            <button type="button" aria-label="Toggle Details" class="toggle-btn">🔍✏️</button>
-            <button type="button" aria-label="Delete Project" class="delete-btn">🗑️</button>
+            <button aria-hidden="true" type="button" aria-label="Toggle Details" class="toggle-btn">🔍✏️</button>
+            <button aria-hidden="true" type="button" aria-label="Delete Project" class="delete-btn">🗑️</button>
           </td>
         </tr>
 
@@ -185,8 +185,8 @@
           <td><span class="status-urgent">urgent</span></td>
           <td>1</td>
           <td>
-            <button type="button" aria-label="Toggle Details" class="toggle-btn">🔍✏️</button>
-            <button type="button" aria-label="Delete Project" class="delete-btn">🗑️</button>
+            <button aria-hidden="true" type="button" aria-label="Toggle Details" class="toggle-btn">🔍✏️</button>
+            <button aria-hidden="true" type="button" aria-label="Delete Project" class="delete-btn">🗑️</button>
           </td>
         </tr>
 
@@ -245,7 +245,7 @@
       </div>
       <div class="footer-center">
         <a href="#top">
-          <img src="images/SnapVault-logo.png" alt="SnapVault Logo" class="footer-logo">
+          <img src="images/SnapVault-logo.png" alt="SnapVault logo with camera lens and lock" class="footer-logo">
           <span aria-label="Back to top" class="footer-logo-caption">BACK TO TOP</span>
         </a>
       </div>
@@ -426,7 +426,7 @@
               <div class="gallery" style="display:flex; margin-top:10px;">
                 ${project.images.map(img => `
                   <div class="gallery-item">
-                    <img src="${img.src}">
+                    <img src="${img.src}" alt="${img.caption || 'Project image'}">
                     <input type="text" value="${img.caption}">
                     <button type="button" class="remove-thumb">✖</button>
                   </div>

@@ -82,8 +82,6 @@ body {
   color: var(--text);
 }
 a:focus, button:focus, input:focus {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
   box-shadow: 0 0 0 3px rgba(25, 82, 154, 0.2);
   padding: 2px;
   border-radius: 5px;
@@ -355,7 +353,10 @@ body.upload-page form {
   text-align: center;
   position: relative;
   overflow: visible;
-  color: var(--text)
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .content-heading {
   font-size: 3em;
@@ -379,10 +380,10 @@ body.upload-page form {
 }
 .content ul {
   list-style: none;
-  padding: 0;
-  margin-top: 20px;
+  padding-left: 11%;
+  margin: 20px auto 0;
   text-align: left;
-  display: inline-block;
+  max-width: 500px;
 }
 .content li::before {
   content: "✔";
@@ -408,6 +409,15 @@ body.upload-page form {
 }
 .content li:nth-child(3) { 
   animation-delay: 0.6s; 
+}
+.content li:nth-child(4) { 
+  animation-delay: 0.8s; 
+}
+.content li:nth-child(5) { 
+  animation-delay: 1s; 
+}
+.content li:nth-child(6) { 
+  animation-delay: 1.2s; 
 }
 body.about-page {
   position: relative;
@@ -810,8 +820,8 @@ transition: transform 0.1s ease, background-color 0.2s ease;
   transform: scale(1.02);
   transition: transform 0.2s ease;
 }
-.video h3 {
-  margin-bottom: 15px;
+.video h2 {
+  margin-bottom: 20px;
   color: var(--primary);
   font-size: 1.8em;
 }
@@ -924,6 +934,11 @@ html {
 }
 #emailCopy:hover {
   color: var(--accent);
+}
+#emailCopy:focus {
+  outline: none;
+  box-shadow: none;
+  padding: 0;
 }
 .email-toast {
   position: absolute;
