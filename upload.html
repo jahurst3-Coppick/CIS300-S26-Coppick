@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Create and upload new projects in SnapVault. Add descriptions, images, and track project status in a simple, 
-    organized project management system.">
-  <meta name="keywords" content="project management, file storage, upload projects, organize files, SnapVault, collaboration, task tracking">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Create a new project in SnapVault by adding details, uploading files, and organizing your work through an easy-to-use submission form."/>
+  <meta name="keywords" content="create new project, upload project files, add project, project submission, file upload, project creation, project input, save project data, drag and drop upload, project setup, project management, SnapVault"/>
   <title>SnapVault | New Project</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="images/SnapVault-favicon.png">
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" type="image/png" href="images/SnapVault-favicon.png"/>
 </head>
 <body id="top" class="upload-page">
   <header>
     <div class="header-container">
       <div class="branding">
         <a href="index.html">
-          <img class="logo-icon" src="images/SnapVault-logo-3.png" alt="SnapVault Icon">
+          <img class="logo-icon" src="images/SnapVault-logo-3.png" alt="SnapVault Icon with lens and lock">
         </a>
         <h2 class="logo-text"><a href="index.html">SnapVault</a></h2>
       </div>
+
       <div class="search-box header-search">
         <div class="search-inner">
           <input type="text" placeholder="Search..." aria-label="Search projects">
@@ -28,6 +28,7 @@
       </div>
     </div>
   </header>
+
   <nav>
     <div class="nav-container">
       <ul class="nav-links">
@@ -36,6 +37,7 @@
         <li><a href="upload.html">New Project</a></li>
         <li><a href="about.html">About</a></li>
       </ul>
+
       <div class="search-box nav-search">
         <div class="search-inner">
           <input type="text" id="nav-search" placeholder="Search..." aria-label="Search projects">
@@ -45,249 +47,264 @@
       </div>
     </div>
   </nav>
+
   <main>
     <section class="hero upload-hero-bg">
-      <img class="hero-foreground-image" src="images/background1.png" alt="Background Image of Tools.">
+      <img class="hero-foreground-image" src="images/background1.png" alt="Background Image of Contractor Tools.">
       <h1>Add New Project</h1>
       <p>Fill out the form below to add a new project.</p>
     </section>
+
+    <!-- FORM -->
     <form id="projectForm" action="#">
       <label for="projectName">Project Name:</label>
       <input type="text" id="projectName" name="projectName" required>
+
       <label for="projectDesc">Description:</label>
       <textarea id="projectDesc" name="projectDesc" required></textarea>
+
       <label for="projectStatus">Status:</label>
       <select id="projectStatus" name="projectStatus">
         <option value="active">active</option>
         <option value="completed">completed</option>
         <option value="urgent">urgent</option>
       </select>
+
       <div class="urgent-input" id="urgentBox" style="display:none;">
         <label for="urgentIssue">Urgent Issue:</label>
         <input type="text" id="urgentIssue" name="urgentIssue" placeholder="Describe urgent issue">
       </div>
+
       <label for="projectNotes">Notes:</label>
       <textarea id="projectNotes" name="projectNotes"></textarea>
+
       <h3>Images</h3>
+
       <div id="dropZone" class="drop-zone">
         <p>Drag & Drop Images Here<br>or Click to Select</p>
         <input type="file" id="imageInput" accept="image/*" multiple>
       </div>
+
       <div id="galleryPreview" class="gallery"></div>
-      <button type="submit" aria-label="Submit" type="submit" class="submit-btn">Add Project</button>
+
+      <button type="submit" aria-label="Submit" class="submit-btn">Add Project</button>
     </form>
   </main>
+
   <footer>
     <div class="footer-container">
       <div class="footer-left">
+        <!-- EMAIL -->
         <div class="email-wrapper">
           <p>
             Contact:
-            <span id="emailCopy" class="email-copy">
-            support@snapvault.com
-            </span>
+            <a href="#" id="emailCopy">support@snapvault.com</a>
           </p>
           <div id="toast" class="email-toast">Email Copied!</div>
         </div>
+        <!-- EXTERNAL LINK -->
         <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">Explore More Online</a>
       </div>
+
       <div class="footer-center">
         <a href="#top">
-          <img src="images/SnapVault-logo.png" alt="SnapVault Logo" class="footer-logo">
-          <span class="footer-logo-caption">BACK TO TOP</span>
+          <img src="images/SnapVault-logo.png" alt="SnapVault Logo with lens and lock" class="footer-logo">
+          <span aria-label="Back to top" class="footer-logo-caption">BACK TO TOP</span>
         </a>
       </div>
+
       <div class="footer-right">
         <p>© 2026 SnapVault</p>
       </div>
     </div>
   </footer>
+
   <script>
     document.addEventListener("DOMContentLoaded", function () {
 
-  let uploadedImages = [];
+      let uploadedImages = [];
 
-  // ================= SEARCH =================
-  const searchBoxes = document.querySelectorAll('.header-search, .nav-search');
-  if (!searchBoxes.length) return;
+      const searchBoxes = document.querySelectorAll('.header-search, .nav-search');
+      if (!searchBoxes.length) return;
 
-  function getProjects() {
-    return JSON.parse(localStorage.getItem('projects') || '[]');
-  }
+      function getProjects() {
+        return JSON.parse(localStorage.getItem('projects') || '[]');
+      }
 
-  searchBoxes.forEach(searchBox => {
-    const input = searchBox.querySelector('input');
-    const button = searchBox.querySelector('button');
+      searchBoxes.forEach(searchBox => {
+        const input = searchBox.querySelector('input');
+        const button = searchBox.querySelector('button');
 
-    let results = searchBox.querySelector('.search-results');
-    if (!results) {
-      results = document.createElement('div');
-      results.classList.add('search-results');
-      searchBox.appendChild(results);
-    }
+        let results = searchBox.querySelector('.search-results');
+        if (!results) {
+          results = document.createElement('div');
+          results.classList.add('search-results');
+          searchBox.appendChild(results);
+        }
 
-    function performSearch() {
-      const query = input.value.trim().toLowerCase();
-      results.innerHTML = '';
+        function performSearch() {
+          const query = input.value.trim().toLowerCase();
+          results.innerHTML = '';
 
-      if (!query) return;
+          if (!query) return;
 
-      const projects = getProjects();
+          const projects = getProjects();
 
-      const found = projects.filter(p =>
-        (p.name && p.name.toLowerCase().includes(query)) ||
-        (p.desc && p.desc.toLowerCase().includes(query))
-      );
+          const found = projects.filter(p =>
+            (p.name && p.name.toLowerCase().includes(query)) ||
+            (p.desc && p.desc.toLowerCase().includes(query))
+          );
 
-      if (found.length) {
-        found.forEach(p => {
-          const item = document.createElement('p');
-          item.textContent = `Found project: ${p.name}`;
+          if (found.length) {
+            found.forEach(p => {
+              const item = document.createElement('p');
+              item.textContent = `Found project: ${p.name}`;
 
-          item.addEventListener('click', () => {
-            localStorage.setItem('searchTarget', p.name);
-            window.location.href = "projects.html";
+              item.addEventListener('click', () => {
+                localStorage.setItem('searchTarget', p.name);
+                window.location.href = "projects.html";
+              });
+
+              results.appendChild(item);
+            });
+          } else {
+            results.innerHTML = `<p>No projects found for: ${query}</p>`;
+          }
+        }
+
+        button.addEventListener('click', performSearch);
+
+        input.addEventListener('keypress', e => {
+          if (e.key === 'Enter') performSearch();
+        });
+      });
+
+      const status = document.getElementById("projectStatus");
+      const urgentBox = document.getElementById("urgentBox");
+
+      if (status && urgentBox) {
+        status.addEventListener("change", function () {
+          urgentBox.style.display = this.value === "urgent" ? "block" : "none";
+        });
+      }
+
+      const dropZone = document.getElementById("dropZone");
+      const imageInput = document.getElementById("imageInput");
+      const galleryPreview = document.getElementById("galleryPreview");
+
+      if (dropZone && imageInput) {
+
+        dropZone.addEventListener("dragover", e => {
+          e.preventDefault();
+          dropZone.classList.add("drag-over");
+        });
+
+        dropZone.addEventListener("dragleave", () => {
+          dropZone.classList.remove("drag-over");
+        });
+
+        dropZone.addEventListener("drop", e => {
+          e.preventDefault();
+          dropZone.classList.remove("drag-over");
+          handleFiles(e.dataTransfer.files);
+        });
+
+        dropZone.addEventListener("click", () => imageInput.click());
+
+        imageInput.addEventListener("change", () => handleFiles(imageInput.files));
+      }
+
+      function handleFiles(files) {
+        [...files].forEach(file => {
+          const reader = new FileReader();
+
+          reader.onload = e => {
+            uploadedImages.push({ src: e.target.result, caption: "" });
+            renderGallery();
+          };
+
+          reader.readAsDataURL(file);
+        });
+      }
+
+      function renderGallery() {
+        galleryPreview.innerHTML = "";
+
+        uploadedImages.forEach((img, index) => {
+          const item = document.createElement("div");
+          item.classList.add("gallery-item");
+
+          item.innerHTML = `
+            <img src="${img.src}">
+            <input type="text" value="${img.caption}" placeholder="Caption">
+            <button type="button" class="remove-thumb">Remove</button>
+          `;
+
+          item.querySelector("input").addEventListener("input", e => {
+            uploadedImages[index].caption = e.target.value;
           });
 
-          results.appendChild(item);
+          item.querySelector(".remove-thumb").addEventListener("click", () => {
+            uploadedImages.splice(index, 1);
+            renderGallery();
+          });
+
+          galleryPreview.appendChild(item);
         });
-      } else {
-        results.innerHTML = `<p>No projects found for: ${query}</p>`;
-      }
-    }
-
-    button.addEventListener('click', performSearch);
-    input.addEventListener('keypress', e => {
-      if (e.key === 'Enter') performSearch();
-    });
-  });
-
-  // ================= URGENT TOGGLE =================
-  const status = document.getElementById("projectStatus");
-  const urgentBox = document.getElementById("urgentBox");
-
-  if (status && urgentBox) {
-    status.addEventListener("change", function () {
-      urgentBox.style.display = this.value === "urgent" ? "block" : "none";
-    });
-  }
-
-  // ================= DROPZONE =================
-  const dropZone = document.getElementById("dropZone");
-  const imageInput = document.getElementById("imageInput");
-  const galleryPreview = document.getElementById("galleryPreview");
-
-  if (dropZone && imageInput) {
-
-    dropZone.addEventListener("dragover", e => {
-      e.preventDefault();
-      dropZone.classList.add("drag-over");
-    });
-
-    dropZone.addEventListener("dragleave", () => {
-      dropZone.classList.remove("drag-over");
-    });
-
-    dropZone.addEventListener("drop", e => {
-      e.preventDefault();
-      dropZone.classList.remove("drag-over");
-      handleFiles(e.dataTransfer.files);
-    });
-
-    dropZone.addEventListener("click", () => imageInput.click());
-
-    imageInput.addEventListener("change", () => handleFiles(imageInput.files));
-  }
-
-  function handleFiles(files) {
-    [...files].forEach(file => {
-      const reader = new FileReader();
-      reader.onload = e => {
-        uploadedImages.push({ src: e.target.result, caption: "" });
-        renderGallery();
-      };
-      reader.readAsDataURL(file);
-    });
-  }
-
-  function renderGallery() {
-    galleryPreview.innerHTML = "";
-
-    uploadedImages.forEach((img, index) => {
-      const item = document.createElement("div");
-      item.classList.add("gallery-item");
-
-      item.innerHTML = `
-        <img src="${img.src}">
-        <input type="text" value="${img.caption}" placeholder="Caption">
-        <button type="button" class="remove-thumb">Remove</button>
-      `;
-
-      item.querySelector("input").addEventListener("input", e => {
-        uploadedImages[index].caption = e.target.value;
-      });
-
-      item.querySelector(".remove-thumb").addEventListener("click", () => {
-        uploadedImages.splice(index, 1);
-        renderGallery();
-      });
-
-      galleryPreview.appendChild(item);
-    });
-  }
-
-  // ================= FORM SUBMIT =================
-  const projectForm = document.getElementById("projectForm");
-
-  if (projectForm) {
-    projectForm.addEventListener("submit", e => {
-      e.preventDefault();
-
-      const project = {
-        name: document.getElementById("projectName").value.trim(),
-        desc: document.getElementById("projectDesc").value.trim(),
-        status: document.getElementById("projectStatus").value,
-        urgent: document.getElementById("urgentIssue").value,
-        notes: document.getElementById("projectNotes").value,
-        files: uploadedImages.length,
-        created: new Date().toISOString().split("T")[0],
-        modified: new Date().toISOString().split("T")[0],
-        images: uploadedImages
-      };
-
-      let projects = JSON.parse(localStorage.getItem("projects") || "[]");
-
-      if (projects.some(p => p.name === project.name)) {
-        alert("Project name already exists!");
-        return;
       }
 
-      projects.push(project);
-      localStorage.setItem("projects", JSON.stringify(projects));
+      const projectForm = document.getElementById("projectForm");
 
-      projectForm.reset();
-      uploadedImages = [];
-      galleryPreview.innerHTML = "";
-      urgentBox && (urgentBox.style.display = "none");
+      if (projectForm) {
+        projectForm.addEventListener("submit", e => {
+          e.preventDefault();
 
-      window.location.href = "projects.html";
+          const project = {
+            name: document.getElementById("projectName").value.trim(),
+            desc: document.getElementById("projectDesc").value.trim(),
+            status: document.getElementById("projectStatus").value,
+            urgent: document.getElementById("urgentIssue").value,
+            notes: document.getElementById("projectNotes").value,
+            files: uploadedImages.length,
+            created: new Date().toISOString().split("T")[0],
+            modified: new Date().toISOString().split("T")[0],
+            images: uploadedImages
+          };
+
+          let projects = JSON.parse(localStorage.getItem("projects") || "[]");
+
+          if (projects.some(p => p.name === project.name)) {
+            alert("Project name already exists!");
+            return;
+          }
+
+          projects.push(project);
+          localStorage.setItem("projects", JSON.stringify(projects));
+
+          projectForm.reset();
+          uploadedImages = [];
+          galleryPreview.innerHTML = "";
+          urgentBox && (urgentBox.style.display = "none");
+
+          window.location.href = "projects.html";
+        });
+      }
+
+      const email = document.getElementById("emailCopy");
+      const toast = document.getElementById("toast");
+
+      if (email && toast) {
+        email.addEventListener("click", e => {
+          e.preventDefault();
+          navigator.clipboard.writeText("support@snapvault.com");
+
+          toast.classList.add("show");
+
+          setTimeout(() => toast.classList.remove("show"), 1500);
+        });
+      }
+
     });
-  }
-
-  // ================= EMAIL =================
-  const email = document.getElementById("emailCopy");
-  const toast = document.getElementById("toast");
-
-  if (email && toast) {
-    email.addEventListener("click", () => {
-      navigator.clipboard.writeText("support@snapvault.com");
-
-      toast.classList.add("show");
-      setTimeout(() => toast.classList.remove("show"), 1500);
-    });
-  }
-
-});
   </script>
 </body>
 </html>

@@ -1,21 +1,20 @@
  <!DOCTYPE html>
  <html lang="en">
  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Page not found on SnapVault. The page you are looking for may have been moved or deleted. Return to the 
-        homepage to continue managing your projects.">
-    <meta name="keywords" content="project management, file storage, upload projects, organize files, SnapVault, collaboration, task tracking">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Oops! This page was not found. Use SnapVault navigation to return home or find the project you were looking for."/>
+    <meta name="keywords" content="404 page not found, error page, broken link recovery, page not found message, navigation help page, redirect to home, missing page error, SnapVault support page, website error handling, lost page recovery, user guidance page, project management error, file storage error, project dashboard error, collaboration platform error"/>
     <title>SnapVault | Page Not Found</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="images/SnapVault-favicon.png">
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="icon" type="image/png" href="images/SnapVault-favicon.png"/>
  </head>
  <body>
     <header>
         <div class="header-container">
             <div class="branding">
                 <a href="index.html" aria-label="Go to Home">
-                  <img class="logo-icon" src="images/SnapVault-logo-3.png" alt="SnapVault Icon" />
+                  <img class="logo-icon" src="images/SnapVault-logo-3.png" alt="SnapVault Icon"/>
                 </a>
                 <h2 class="logo-text">
                     <a href="index.html" aria-label="Go to Home">
@@ -32,6 +31,7 @@
             </div>
         </div>
     </header>
+
     <nav>
         <div class="nav-container">
             <ul class="nav-links">
@@ -51,6 +51,7 @@
             </div>
         </div>
     </nav>
+
     <main class="error-page">
         <div class="logo-container">
             <img src="images/SnapVault-logo.png" alt="SnapVault Logo" class="logo-icon">
@@ -71,24 +72,25 @@
             </div>
         </section>
     </main>
+
     <footer>
         <div class="footer-container">
             <div class="footer-left">
+                <!-- Email -->
                 <div class="email-wrapper">
-                <p>
-                    Contact:
-                    <span id="emailCopy" class="email-copy">
-                    support@snapvault.com
-                    </span>
-                </p>
-                <div id="toast" class="email-toast">Email Copied!</div>
+                    <p>
+                        Contact:
+                        <a href="#" id="emailCopy">support@snapvault.com</a>
+                    </p>
+                    <div id="toast" class="email-toast">Email Copied!</div>
                 </div>
+                <!-- EXTERNAL LINK -->
                 <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">Explore More Online</a>
             </div>
             <div class="footer-center">
                 <a href="#top">
                     <img src="images/SnapVault-logo.png" alt="SnapVault Logo" class="footer-logo">
-                    <span class="footer-logo-caption">BACK TO TOP</span>
+                    <span aria-label="Back to top" class="footer-logo-caption">BACK TO TOP</span>
                 </a>    
             </div>
             <div class="footer-right">
@@ -96,6 +98,7 @@
             </div>
         </div>
     </footer>
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
 
@@ -156,13 +159,13 @@
                     if (e.key === 'Enter') performSearch();
                 });
             });
-        });
-        document.addEventListener('DOMContentLoaded', () => {
+        
         const email = document.getElementById("emailCopy");
         const toast = document.getElementById("toast");
 
             if (email && toast) {
-            email.addEventListener("click", () => {
+            email.addEventListener("click", (e) => {
+                e.preventDefault();
                 navigator.clipboard.writeText("support@snapvault.com");
 
                 toast.classList.add("show");

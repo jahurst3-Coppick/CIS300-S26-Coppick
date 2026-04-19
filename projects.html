@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="View, manage, and update your projects in SnapVault. Track progress, edit details, and organize files all 
-    in one place.">
-  <meta name="keywords" content="project management, file storage, upload projects, organize files, SnapVault, collaboration, task tracking">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Manage and track all your projects in SnapVault. View details, update progress, and organize files in a dynamic project dashboard."/>
+  <meta name="keywords" content="project dashboard, manage projects, edit project details, track project progress, project management, project status, projects, project organizer, project tracking, project editing, project gallery, project notes, project files, SnapVault"/>
   <title>SnapVault | Projects</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="images/SnapVault-favicon.png">
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" type="image/png" href="images/SnapVault-favicon.png"/>
 </head>
 <body id="top" class="projects">
   <header>
@@ -30,6 +29,7 @@
       </div>
     </div>
   </header>
+
   <nav>
     <div class="nav-container">
       <ul class="nav-links">
@@ -47,12 +47,15 @@
       </div>
     </div>
   </nav>
+
   <main class="projects-page">
     <section class="projects-hero hero-bg">
       <h1>Projects</h1>
       <p>Manage and track all your projects in one place</p>
       <a href="upload.html" class="new-project-btn">New Project</a>
     </section>
+
+    <!-- Table -->
     <table class="projects-table">
       <caption>Project Overview and Management Dashboard</caption>
       <thead>
@@ -64,6 +67,7 @@
           <th>Actions</th>
         </tr>
       </thead>
+
       <tbody>
         <tr class="example-project locked">
           <td>Example 1: Beach House Remodel</td>
@@ -75,49 +79,51 @@
             <button type="button" aria-label="Delete Project" class="delete-btn">🗑️</button>
           </td>
         </tr>
+
         <tr class="project-details example-project locked">
           <td colspan="5">
             <div class="details-content">
               <div class="edit-section">
-                <label>Project Name:</label>
-                <input type="text" value="Beach House Remodel">
-                <label>Description:</label>
-                <textarea>Complete beach house renovation</textarea>
-                <label>Status:</label>
-                <select class="status-select">
+                <label for="example1-name">Project Name:</label>
+                <input id="example1-name" type="text" value="Beach House Remodel">
+                <label for="example1-desc">Description:</label>
+                <textarea id="example1-desc">Complete beach house renovation</textarea>
+                <label for="example1-status">Status:</label>
+                <select id="example1-status" class="status-select">
                   <option>active</option>
                   <option>completed</option>
                   <option>urgent</option>
                 </select>
                 <div class="urgent-input">
-                  <label>Urgent Issue:</label>
-                  <input type="text" placeholder="Describe urgent issue">
+                  <label for="example1-urgent">Urgent Issue:</label>
+                  <input id="example1-urgent" type="text" placeholder="Describe urgent issue">
                 </div>
-                <label>Notes:</label>
-                <textarea>Waiting on client approval and first deposit</textarea>
+                <label for="example1-notes">Notes:</label>
+                <textarea id="example1-notes">Waiting on client approval and first deposit</textarea>
                 <div class="dates">
                   <p><strong>Created:</strong> 2026-02-15</p>
                   <p><strong>Last Modified:</strong> 2026-03-08</p>
                 </div>
               </div>
-              <div class="gallery" style="display:flex; margin-top:10px;">
+              <div class="gallery">
                 <div class="gallery-item">
                   <img src="images/sample1.jpg" alt="Project Framing Image">
-                  <input type="text" value="Framing">
+                  <input id="example1-gallery1" type="text" value="Framing">
                 </div>
                 <div class="gallery-item">
                   <img src="images/sample2.jpg" alt="Project Trusses Image">
-                  <input type="text" value="Trusses">
+                  <input id="example1-gallery2" type="text" value="Trusses">
                 </div>
                 <div class="gallery-item">
                   <img src="images/sample3.jpg" alt="Project Exterior Image">
-                  <input type="text" value="Exterior">
+                  <input id="example1-gallery3" type="text" value="Exterior">
                 </div>
               </div>
-              <button type="button" aria-label="Save Changes" type="button" class="save-project-btn">Save Changes</button>
+              <button type="button" aria-label="Save Changes" class="save-project-btn">Save Changes</button>
             </div>
           </td>
         </tr>
+
         <tr class="example-project locked">
           <td>Example 2: Beach House Decking</td>
           <td>Replace Beach House Decking</td>
@@ -128,49 +134,51 @@
             <button type="button" aria-label="Delete Project" class="delete-btn">🗑️</button>
           </td>
         </tr>
+
         <tr class="project-details example-project locked">
           <td colspan="5">
             <div class="details-content">
               <div class="edit-section">
-                <label>Project Name:</label>
-                <input type="text" value="Beach House Decking">
-                <label>Description:</label>
-                <textarea>Redesign and replace the beach house decking</textarea>
-                <label>Status:</label>
-                <select class="status-select">
+                <label for="example2-name">Project Name:</label>
+                <input id="example2-name" type="text" value="Beach House Decking">
+                <label for="example2-desc">Description:</label>
+                <textarea id="example2-desc">Redesign and replace the beach house decking</textarea>
+                <label for="example2-status">Status:</label>
+                <select id="example2-status" class="status-select">
                   <option>active</option>
                   <option>completed</option>
                   <option>urgent</option>
                 </select>
                 <div class="urgent-input">
-                  <label>Urgent Issue:</label>
-                  <input type="text" placeholder="Describe urgent issue">
+                  <label for="example2-urgent">Urgent Issue:</label>
+                  <input id="example2-urgent" type="text" placeholder="Describe urgent issue">
                 </div>
-                <label>Notes:</label>
-                <textarea>Client has requested an exterior shower and deck extension</textarea>
+                <label for="example2-notes">Notes:</label>
+                <textarea id="example2-notes">Client has requested an exterior shower and deck extension</textarea>
                 <div class="dates">
                   <p><strong>Created:</strong> 2026-02-15</p>
                   <p><strong>Last Modified:</strong> 2026-03-08</p>
                 </div>
               </div>
-              <div class="gallery" style="display:flex; margin-top:10px;">
+              <div class="gallery">
                 <div class="gallery-item">
                   <img src="images/sample4.jpg" alt="Project Deck Shower Image">
-                  <input type="text" value="Deck Shower">
+                  <input id="example2-gallery1" type="text" value="Deck Shower">
                 </div>
                 <div class="gallery-item">
                   <img src="images/sample5.jpg" alt="Project Deck Stairs Image">
-                  <input type="text" value="Deck Stairs">
+                  <input id="example2-gallery2" type="text" value="Deck Stairs">
                 </div>
                 <div class="gallery-item">
                   <img src="images/sample6.jpg" alt="Project Deck Railing Image">
-                  <input type="text" value="Deck Railing">
+                  <input id="example2-gallery3" type="text" value="Deck Railing">
                 </div>
               </div>
-              <button type="button" aria-label="Save Changes" type="button" class="save-project-btn">Save Changes</button>
+              <button type="button" aria-label="Save Changes" class="save-project-btn">Save Changes</button>
             </div>
           </td>
         </tr>
+
         <tr class="example-project locked">
           <td>Example 3: Beach House Flooring</td>
           <td>Complete Beach House LVP Flooring</td>
@@ -181,62 +189,64 @@
             <button type="button" aria-label="Delete Project" class="delete-btn">🗑️</button>
           </td>
         </tr>
+
         <tr class="project-details example-project locked">
           <td colspan="5">
             <div class="details-content">
               <div class="edit-section">
-                <label>Project Name:</label>
-                <input type="text" value="Beach House Flooring">
-                <label>Description:</label>
-                <textarea>Complete beach house LVP flooring installation</textarea>
-                <label>Status:</label>
-                <select class="status-select">
+                <label for="example3-name">Project Name:</label>
+                <input id="example3-name" type="text" value="Beach House Flooring">
+                <label for="example3-desc">Description:</label>
+                <textarea id="example3-desc">Complete beach house LVP flooring installation</textarea>
+                <label for="example3-status">Status:</label>
+                <select id="example3-status" class="status-select">
                   <option>active</option>
                   <option>completed</option>
                   <option selected>urgent</option>
                 </select>
                 <div class="urgent-input">
-                  <label>Urgent Issue:</label>
-                  <input type="text" value="Flooring material delayed by supplier - need to expedite delivery">
+                  <label for="example3-urgent">Urgent Issue:</label>
+                  <input id="example3-urgent" type="text" value="Flooring material delayed by supplier - need to expedite delivery">
                 </div>
-                <label>Notes:</label>
-                <textarea>Client has requested a "dusk cherry" LVP flooring throughout the house</textarea>
+                <label for="example3-notes">Notes:</label>
+                <textarea id="example3-notes">Client has requested a "dusk cherry" LVP flooring throughout the house. Urgent: Guests check in next week!</textarea>
                 <div class="dates">
                   <p><strong>Created:</strong> 2026-02-15</p>
                   <p><strong>Last Modified:</strong> 2026-03-08</p>
                 </div>
               </div>
-              <div class="gallery" style="display:flex; margin-top:10px;">
+              <div class="gallery">
                 <div class="gallery-item">
                   <img src="images/sample7.jpg" alt="Project Flooring Image">
-                  <input type="text" value="Framing">
+                  <input id="example3-gallery1" type="text" value="LVP Flooring">
                 </div>
               </div>
-              <button type="submit" aria-label="Save Changes" class="save-project-btn">Save Changes</button>
+              <button type="button" aria-label="Save Changes" class="save-project-btn">Save Changes</button>
             </div>
           </td>
         </tr>
       </tbody>
     </table>
   </main>
+
   <footer>
     <div class="footer-container">
       <div class="footer-left">
+        <!-- Email -->
         <div class="email-wrapper">
           <p>
             Contact:
-            <span id="emailCopy" class="email-copy">
-            support@snapvault.com
-            </span>
+            <a href="#" id="emailCopy">support@snapvault.com</a>
           </p>
           <div id="toast" class="email-toast">Email Copied!</div>
         </div>
+        <!-- EXTERNAL LINK -->
         <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">Explore More Online</a>
       </div>
       <div class="footer-center">
         <a href="#top">
           <img src="images/SnapVault-logo.png" alt="SnapVault Logo" class="footer-logo">
-          <span class="footer-logo-caption">BACK TO TOP</span>
+          <span aria-label="Back to top" class="footer-logo-caption">BACK TO TOP</span>
         </a>
       </div>
       <div class="footer-right">
@@ -244,8 +254,9 @@
       </div>
     </div>
   </footer>
+
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', () => {
 
       const searchBoxes = document.querySelectorAll('.header-search, .nav-search');
       if (!searchBoxes.length) return;
@@ -260,290 +271,287 @@
 
         let results = searchBox.querySelector('.search-results');
         if (!results) {
-            results = document.createElement('div');
-            results.classList.add('search-results');
-            searchBox.appendChild(results);
+          results = document.createElement('div');
+          results.classList.add('search-results');
+          searchBox.appendChild(results);
         }
 
         function performSearch() {
-            const query = input.value.trim().toLowerCase();
-            results.innerHTML = '';
+          const query = input.value.trim().toLowerCase();
+          results.innerHTML = '';
 
-            if (!query) return;
+          if (!query) return;
 
-            const projects = getProjects();
+          const projects = getProjects();
 
-            const found = projects.filter(p =>
-                (p.name && p.name.toLowerCase().includes(query)) ||
-                (p.desc && p.desc.toLowerCase().includes(query))
-            );
+          const found = projects.filter(p =>
+            (p.name && p.name.toLowerCase().includes(query)) ||
+            (p.desc && p.desc.toLowerCase().includes(query))
+          );
 
-            if (found.length) {
-                found.forEach(p => {
-                    const item = document.createElement('p');
-                    item.textContent = `Found project: ${p.name}`;
-                    item.style.cursor = "pointer";
+          if (found.length) {
+            found.forEach(p => {
+              const item = document.createElement('p');
+              item.textContent = `Found project: ${p.name}`;
+              item.style.cursor = "pointer";
 
-                    item.addEventListener('click', () => {
-                        localStorage.setItem('searchTarget', p.name);
-                        window.location.href = "projects.html";
-                    });
+              item.addEventListener('click', () => {
+                localStorage.setItem('searchTarget', p.name);
+                window.location.href = "projects.html";
+              });
 
-                    results.appendChild(item);
-                });
-            } else {
-                const item = document.createElement('p');
-                item.textContent = `No projects found for: ${query}`;
-                results.appendChild(item);
-            }
+              results.appendChild(item);
+            });
+          } else {
+            const item = document.createElement('p');
+            item.textContent = `No projects found for: ${query}`;
+            results.appendChild(item);
+          }
         }
 
         button.addEventListener('click', performSearch);
-
         input.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') performSearch();
-        });
-      });
-    });
-    function initToggleButtons() {
-      document.querySelectorAll('.toggle-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const row = btn.closest('tr');
-          const details = row.nextElementSibling;
-
-          document.querySelectorAll('.project-details').forEach(r => {
-            if (r !== details) r.style.display = 'none';
-          });
-
-          details.style.display =
-            details.style.display === 'table-row' ? 'none' : 'table-row';
-        });
-      });
-    }
-
-    function initDeleteButtons() {
-      document.querySelectorAll('.delete-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const row = btn.closest('tr');
-
-          // 🔒 prevent deleting locked/sample projects
-          if (row.classList.contains('locked')) return;
-
-          const details = row.nextElementSibling;
-
-          if (confirm("Delete this project?")) {
-            row.remove();
-            details.remove();
-
-            let projects = JSON.parse(localStorage.getItem('projects') || '[]');
-            const name = row.querySelector('td').innerText;
-
-            projects = projects.filter(p => p.name !== name);
-            localStorage.setItem('projects', JSON.stringify(projects));
-          }
-        });
-      });
-    }
-
-    function initUrgentSelect(select) {
-      select.addEventListener('change', () => {
-        const urgentBox = select.closest('.edit-section').querySelector('.urgent-input');
-        urgentBox.style.display = select.value === 'urgent' ? 'block' : 'none';
-      });
-    }
-
-    function addProject(project) {
-      const table = document.querySelector('.projects-table tbody');
-
-      const row = document.createElement('tr');
-      row.innerHTML = `
-        <td>${project.name}</td>
-        <td>${project.desc}</td>
-        <td><span class="status-${project.status}">${project.status}</span></td>
-        <td>${project.images.length}</td>
-        <td>
-          <button class="toggle-btn">🔍✏️</button>
-          <button class="delete-btn">🗑️</button>
-        </td>
-      `;
-
-      const details = document.createElement('tr');
-      details.classList.add('project-details');
-
-      details.innerHTML = `
-        <td colspan="5">
-          <div class="details-content">
-            <div class="edit-section">
-              <label>Project Name:</label>
-              <input type="text" value="${project.name}">
-
-              <label>Description:</label>
-              <textarea>${project.desc}</textarea>
-
-              <label>Status:</label>
-              <select class="status-select">
-                <option ${project.status === 'active' ? 'selected' : ''}>active</option>
-                <option ${project.status === 'completed' ? 'selected' : ''}>completed</option>
-                <option ${project.status === 'urgent' ? 'selected' : ''}>urgent</option>
-              </select>
-
-              <div class="urgent-input" style="${project.status === 'urgent' ? 'display:block;' : 'display:none;'}">
-                <label>Urgent Issue:</label>
-                <input type="text" value="${project.urgent || ''}">
-              </div>
-
-              <label>Notes:</label>
-              <textarea>${project.notes}</textarea>
-
-              <div class="dates">
-                <p><strong>Created:</strong> ${project.created}</p>
-                <p><strong>Last Modified:</strong> ${project.modified}</p>
-              </div>
-
-              <div class="edit-drop-zone">
-                <p>Drag & Drop Images Here<br>or Click to Select</p>
-                <input type="file" class="edit-image-input" accept="image/*" multiple>
-              </div>
-
-              <button type="button" class="save-project-btn">Save Changes</button>
-            </div>
-
-            <div class="gallery" style="display:flex; margin-top:10px;">
-              ${project.images.map(img => `
-                <div class="gallery-item">
-                  <img src="${img.src}">
-                  <input type="text" value="${img.caption}">
-                  <button type="button" class="remove-thumb">✖</button>
-                </div>
-              `).join('')}
-            </div>
-          </div>
-        </td>
-      `;
-
-      table.appendChild(row);
-      table.appendChild(details);
-
-      const gallery = details.querySelector('.gallery');
-
-      gallery.querySelectorAll('.remove-thumb').forEach(btn => {
-        btn.addEventListener('click', () => {
-          btn.closest('.gallery-item').remove();
+          if (e.key === 'Enter') performSearch();
         });
       });
 
-      const dropZone = details.querySelector('.edit-drop-zone');
-      const input = details.querySelector('.edit-image-input');
+      function initToggleButtons() {
+        document.querySelectorAll('.toggle-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const row = btn.closest('tr');
+            const details = row.nextElementSibling;
 
-      dropZone.addEventListener('click', () => input.click());
-
-      input.addEventListener('change', (e) => {
-        handleFiles(e.target.files, gallery);
-      });
-
-      function handleFiles(files, gallery) {
-        [...files].forEach(file => {
-          const reader = new FileReader();
-
-          reader.onload = (e) => {
-            const item = document.createElement('div');
-            item.classList.add('gallery-item');
-
-            item.innerHTML = `
-              <img src="${e.target.result}">
-              <input type="text" placeholder="Caption">
-              <button type="button" class="remove-thumb">✖</button>
-            `;
-
-            item.querySelector('.remove-thumb').addEventListener('click', () => {
-              item.remove();
+            document.querySelectorAll('.project-details').forEach(r => {
+              if (r !== details) r.style.display = 'none';
             });
 
-            gallery.appendChild(item);
-          };
-
-          reader.readAsDataURL(file);
+            details.style.display =
+              details.style.display === 'table-row' ? 'none' : 'table-row';
+          });
         });
       }
 
-      details.querySelector('.save-project-btn').addEventListener('click', () => {
-        let projects = JSON.parse(localStorage.getItem('projects') || '[]');
+      function initDeleteButtons() {
+        document.querySelectorAll('.delete-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const row = btn.closest('tr');
 
-        const index = projects.findIndex(p => p.name === project.name);
-        if (index === -1) return;
-        const edit = details.querySelector('.edit-section');
+            if (row.classList.contains('locked')) return;
 
-        projects[index].name = edit.querySelector('input').value;
-        projects[index].desc = edit.querySelectorAll('textarea')[0].value;
-        projects[index].notes = edit.querySelectorAll('textarea')[1].value;
-        projects[index].status = edit.querySelector('.status-select').value;
-        projects[index].urgent = edit.querySelector('.urgent-input input').value;
-        projects[index].modified = new Date().toISOString().split('T')[0];
+            const details = row.nextElementSibling;
 
-        const items = details.querySelectorAll('.gallery-item');
-        projects[index].images = [...items].map(item => ({
-          src: item.querySelector('img').src,
-          caption: item.querySelector('input').value
-        }));
+            if (confirm("Delete this project?")) {
+              row.remove();
+              details.remove();
 
-        localStorage.setItem('projects', JSON.stringify(projects));
+              let projects = JSON.parse(localStorage.getItem('projects') || '[]');
+              const name = row.querySelector('td').innerText;
 
-        location.reload();
-      });
-
-      initUrgentSelect(details.querySelector('.status-select'));
-    }
-
-    function loadProjects() {
-      const projects = JSON.parse(localStorage.getItem('projects') || '[]');
-      projects.forEach(addProject);
-    }
-
-    function initStaticExample() {
-      document.querySelectorAll('.example-project.locked').forEach(row => {
-        const details = row.nextElementSibling;
-
-        if (!details) return;
-
-        details.querySelectorAll('input, textarea, select').forEach(el => {
-          el.disabled = true;
+              projects = projects.filter(p => p.name !== name);
+              localStorage.setItem('projects', JSON.stringify(projects));
+            }
+          });
         });
+      }
 
-        const saveBtn = details.querySelector('.save-project-btn');
-        if (saveBtn) saveBtn.style.display = 'none';
+      function initUrgentSelect(select) {
+        select.addEventListener('change', () => {
+          const urgentBox = select.closest('.edit-section')
+            .querySelector('.urgent-input');
 
-        details.querySelectorAll('.remove-thumb').forEach(btn => {
-          btn.style.display = 'none';
+          urgentBox.style.display =
+            select.value === 'urgent' ? 'block' : 'none';
+        });
+      }
+
+      function addProject(project) {
+        const table = document.querySelector('.projects-table tbody');
+
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${project.name}</td>
+          <td>${project.desc}</td>
+          <td><span class="status-${project.status}">${project.status}</span></td>
+          <td>${project.images.length}</td>
+          <td>
+            <button class="toggle-btn">🔍✏️</button>
+            <button class="delete-btn">🗑️</button>
+          </td>
+        `;
+
+        const details = document.createElement('tr');
+        details.classList.add('project-details');
+
+        details.innerHTML = `
+          <td colspan="5">
+            <div class="details-content">
+              <div class="edit-section">
+
+                <label>Project Name:</label>
+                <input type="text" value="${project.name}">
+
+                <label>Description:</label>
+                <textarea>${project.desc}</textarea>
+
+                <label>Status:</label>
+                <select class="status-select">
+                  <option ${project.status === 'active' ? 'selected' : ''}>active</option>
+                  <option ${project.status === 'completed' ? 'selected' : ''}>completed</option>
+                  <option ${project.status === 'urgent' ? 'selected' : ''}>urgent</option>
+                </select>
+
+                <div class="urgent-input"
+                  style="${project.status === 'urgent' ? 'display:block;' : 'display:none;'}">
+                  <label>Urgent Issue:</label>
+                  <input type="text" value="${project.urgent || ''}">
+                </div>
+
+                <label>Notes:</label>
+                <textarea>${project.notes}</textarea>
+
+                <div class="dates">
+                  <p><strong>Created:</strong> ${project.created}</p>
+                  <p><strong>Last Modified:</strong> ${project.modified}</p>
+                </div>
+
+                <!-- IMAGE UPLOAD SYSTEM (RESTORED EXACTLY) -->
+                <div class="edit-drop-zone">
+                  <p>Drag & Drop Images Here<br>or Click to Select</p>
+                  <input type="file" class="edit-image-input" accept="image/*" multiple>
+                </div>
+
+                <button type="button" class="save-project-btn">Save Changes</button>
+              </div>
+
+              <div class="gallery" style="display:flex; margin-top:10px;">
+                ${project.images.map(img => `
+                  <div class="gallery-item">
+                    <img src="${img.src}">
+                    <input type="text" value="${img.caption}">
+                    <button type="button" class="remove-thumb">✖</button>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          </td>
+        `;
+
+        table.appendChild(row);
+        table.appendChild(details);
+
+        const gallery = details.querySelector('.gallery');
+
+        gallery.querySelectorAll('.remove-thumb').forEach(btn => {
+          btn.addEventListener('click', () => {
+            btn.closest('.gallery-item').remove();
+          });
         });
 
         const dropZone = details.querySelector('.edit-drop-zone');
-        if (dropZone) dropZone.style.display = 'none';
+        const input = details.querySelector('.edit-image-input');
 
-        const deleteBtn = row.querySelector('.delete-btn');
-        if (deleteBtn) deleteBtn.disabled = true;
-      });
-    }
-    document.addEventListener('DOMContentLoaded', () => {
+        dropZone.addEventListener('click', () => input.click());
+
+        input.addEventListener('change', (e) => {
+          handleFiles(e.target.files, gallery);
+        });
+
+        function handleFiles(files, gallery) {
+          [...files].forEach(file => {
+            const reader = new FileReader();
+
+            reader.onload = (e) => {
+              const item = document.createElement('div');
+              item.classList.add('gallery-item');
+
+              item.innerHTML = `
+                <img src="${e.target.result}">
+                <input type="text" placeholder="Caption">
+                <button type="button" class="remove-thumb">✖</button>
+              `;
+
+              item.querySelector('.remove-thumb').addEventListener('click', () => {
+                item.remove();
+              });
+
+              gallery.appendChild(item);
+            };
+
+            reader.readAsDataURL(file);
+          });
+        }
+
+        details.querySelector('.save-project-btn').addEventListener('click', () => {
+          let projects = JSON.parse(localStorage.getItem('projects') || '[]');
+
+          const index = projects.findIndex(p => p.name === project.name);
+          if (index === -1) return;
+
+          const edit = details.querySelector('.edit-section');
+
+          projects[index].name = edit.querySelector('input').value;
+          projects[index].desc = edit.querySelectorAll('textarea')[0].value;
+          projects[index].notes = edit.querySelectorAll('textarea')[1].value;
+          projects[index].status = edit.querySelector('.status-select').value;
+          projects[index].urgent = edit.querySelector('.urgent-input input').value;
+          projects[index].modified = new Date().toISOString().split('T')[0];
+
+          const items = details.querySelectorAll('.gallery-item');
+          projects[index].images = [...items].map(item => ({
+            src: item.querySelector('img').src,
+            caption: item.querySelector('input').value
+          }));
+
+          localStorage.setItem('projects', JSON.stringify(projects));
+          location.reload();
+        });
+
+        initUrgentSelect(details.querySelector('.status-select'));
+      }
+
+      function loadProjects() {
+        const projects = JSON.parse(localStorage.getItem('projects') || '[]');
+        projects.forEach(addProject);
+      }
+
+      function initStaticExample() {
+        document.querySelectorAll('.example-project.locked').forEach(row => {
+          const details = row.nextElementSibling;
+          if (!details) return;
+
+          details.querySelectorAll('input, textarea, select').forEach(el => {
+            el.disabled = true;
+          });
+
+          const saveBtn = details.querySelector('.save-project-btn');
+          if (saveBtn) saveBtn.style.display = 'none';
+
+          const deleteBtn = row.querySelector('.delete-btn');
+          if (deleteBtn) deleteBtn.disabled = true;
+        });
+      }
+
       loadProjects();
       initToggleButtons();
       initDeleteButtons();
       initStaticExample();
-    });
-    document.addEventListener('DOMContentLoaded', () => {
+
       const email = document.getElementById("emailCopy");
       const toast = document.getElementById("toast");
 
-        if (email && toast) {
-          email.addEventListener("click", () => {
-            navigator.clipboard.writeText("support@snapvault.com");
+      if (email && toast) {
+        email.addEventListener("click", (e) => {
+          e.preventDefault();
+          navigator.clipboard.writeText("support@snapvault.com");
 
-            toast.classList.add("show");
+          toast.classList.add("show");
 
-            setTimeout(() => {
-              toast.classList.remove("show");
-            }, 1500);
-          });
-        }
+          setTimeout(() => {
+            toast.classList.remove("show");
+          }, 1500);
+        });
+      }
+
     });
   </script>
 </body>
