@@ -32,7 +32,7 @@
       <div class="search-box header-search">
         <div class="search-inner">
           <input type="text" placeholder="Search..." aria-label="Search projects">
-          <button aria-hidden="true" type="button" aria-label="Search">🔍</button>
+          <button type="button" aria-label="Search">🔍</button>
         </div>
         <div class="search-results"></div>
       </div>
@@ -50,7 +50,7 @@
       <div class="search-box nav-search">
         <div class="search-inner">
           <input type="text" id="nav-search" placeholder="Search..." aria-label="Search projects">
-          <button aria-hidden="true" type="button" aria-label="Search" id="nav-search-btn">🔍</button>
+          <button type="button" aria-label="Search" id="nav-search-btn">🔍</button>
         </div>
         <div class="search-results"></div>
       </div>
@@ -84,8 +84,8 @@
           <td><span class="status-active">active</span></td>
           <td>3</td>
           <td>
-            <button aria-hidden="true" type="button" aria-label="Toggle Details" class="toggle-btn">🔍✏️</button>
-            <button aria-hidden="true" type="button" aria-label="Delete Project" class="delete-btn">🗑️</button>
+            <button type="button" aria-label="Toggle Details" class="toggle-btn">🔍✏️</button>
+            <button type="button" aria-label="Delete Project" class="delete-btn">🗑️</button>
           </td>
         </tr>
 
@@ -139,8 +139,8 @@
           <td><span class="status-completed">completed</span></td>
           <td>3</td>
           <td>
-            <button aria-hidden="true" type="button" aria-label="Toggle Details" class="toggle-btn">🔍✏️</button>
-            <button aria-hidden="true" type="button" aria-label="Delete Project" class="delete-btn">🗑️</button>
+            <button type="button" aria-label="Toggle Details" class="toggle-btn">🔍✏️</button>
+            <button type="button" aria-label="Delete Project" class="delete-btn">🗑️</button>
           </td>
         </tr>
 
@@ -194,8 +194,9 @@
           <td><span class="status-urgent">urgent</span></td>
           <td>1</td>
           <td>
-            <button aria-hidden="true" type="button" aria-label="Toggle Details" class="toggle-btn">🔍✏️</button>
-            <button aria-hidden="true" type="button" aria-label="Delete Project" class="delete-btn">🗑️</button>
+            <button 
+            type="button" aria-label="Toggle Details" class="toggle-btn">🔍✏️</button>
+            <button type="button" aria-label="Delete Project" class="delete-btn">🗑️</button>
           </td>
         </tr>
 
@@ -236,6 +237,12 @@
         </tr>
       </tbody>
     </table>
+    <section class="description-text">
+      <h4>
+        This dashboard allows you to view, edit, and manage all stored projects. You can update project details, track status changes, upload images, 
+        and remove projects as needed.
+      </h4>
+    </section>
   </main>
 
   <footer>
@@ -246,7 +253,7 @@
           <p>
             Contact Email:
             <!-- EMAIL -->
-            <a href="#" id="emailCopy"aria-label="Copy email address support@snapvault.com">
+            <a href="#" id="emailCopy" aria-label="Copy email address support@snapvault.com">
                 support@snapvault.com
             </a>
           </p>
