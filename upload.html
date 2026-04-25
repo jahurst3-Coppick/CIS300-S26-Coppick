@@ -282,6 +282,10 @@
       if (projectForm) {
         projectForm.addEventListener("submit", e => {
           e.preventDefault();
+          e.stopImmediatePropagation(); // 🔥 add this
+
+          const submitBtn = projectForm.querySelector(".submit-btn");
+          submitBtn.blur(); // 🔥 removes “stuck click focus”
 
           const project = {
             name: document.getElementById("projectName").value.trim(),
