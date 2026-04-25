@@ -162,4 +162,4 @@ The demo video showcases:
 - New Project  
 - About  
 
-**Support:** [jennifer@coppick.com](mailto:jennifercoppick@email.com)
+**Support:** [jennifercoppick@email.com](mailto:jennifercoppick@email.com)
