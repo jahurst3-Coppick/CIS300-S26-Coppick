@@ -266,7 +266,8 @@ body.upload-page form {
   transition: transform 0.1s ease, background-color 0.2s ease;
 }
 .hero-btn1:active, .hero-btn2:active {
-  transform: translateY(3px) scale(0.97);
+  transform: translateY(2px) scale(0.99);
+  box-shadow: 0 0 0 #222;
 }
 .hero-btn1 {
   background-color: var(--text);
@@ -283,11 +284,11 @@ body.upload-page form {
   border: 1px solid var(--text);
 }
 .hero-btn1:active {
-  transform: translateY(5px);
+  transform: translateY(2px) scale(0.99);
   box-shadow: 0 0 0 #222;
 }
 .hero-btn2:active {
-  transform: translateY(5px);
+  transform: translateY(2px) scale(0.99);
   box-shadow: 0 0 0 #c96522;
 }
 .cards-heading {
@@ -590,7 +591,7 @@ body.about-page::after {
   border: 1px solid var(--text);
 }
 .new-project-btn:active {
-  transform: translateY(3px);
+  transform: translateY(2px) scale(0.99);
   box-shadow: 0 0 0 #222;
 }
 .view-btn,
@@ -702,7 +703,7 @@ body.about-page::after {
   transform: scale(1.05);
 }
 .submit-btn:active {
-  transform: scale(0.98);
+  transform: translateY(2px) scale(0.99);
   box-shadow: 0 0 0 #123d73;
 }
 .remove-thumb:hover {
@@ -804,7 +805,7 @@ transition: transform 0.1s ease, background-color 0.2s ease;
   transform: scale(1.05);
 }
 .save-project-btn:active {
-  transform: translateY(5px);
+  transform: translateY(2px) scale(0.99);
   box-shadow: 0 0 0 #123d73;
 }
 @keyframes fadeUp {
@@ -855,7 +856,7 @@ transition: transform 0.1s ease, background-color 0.2s ease;
 }
 .cta-btn:active {
   box-shadow: 0 0 0 #123d73;
-  transform: translateY(5px) scale(0.97);
+  transform: translateY(2px) scale(0.99);
 }
 footer {
   background-color: var(--primary);

@@ -97,10 +97,10 @@
 
       <div class="footer-left">
         <p>
-          Contact Email:
+          Contact:
           <!-- Email Link -->
-          <a href="mailto:jennifer@coppick.com">
-              jennifer@coppick.com
+          <a href="mailto:jennifercoppick@email.com">
+              Email Me
           </a>
         </p>
         <span id="copyText" class="copy-text" tabindex="0">
@@ -201,7 +201,7 @@
       });
 
       function showToast() {
-          navigator.clipboard.writeText("jennifer@coppick.com");
+          navigator.clipboard.writeText("jennifercoppick@email.com");
 
           toast.classList.add("show");
 
@@ -210,6 +210,21 @@
           }, 1500);
         }
       }
+
+      const animatedItems = document.querySelectorAll('.content li');
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.animationPlayState = 'running';
+          }
+        });
+      }, { threshold: 0.2 });
+
+      animatedItems.forEach(item => {
+        item.style.animationPlayState = 'paused';
+        observer.observe(item);
+      });
     });
   </script>
 </body>
